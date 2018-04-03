@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用戶管理</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__CSS__/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="__CSS__/animate.min.css" rel="stylesheet">
+    <link href="__CSS__/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="__CSS__/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link rel="stylesheet" href="__JS__/plugins/layui/css/layui.css">
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>用戶列表</h5>
+        </div>
+        <div class="ibox-content">
+            <!--搜索框开始-->
+            <form id='commentForm' role="form" method="post" class="form-inline">
+                <div class="content clearfix m-b">
+                <input type="hidden" id="excel" value="">
+                    <div class="form-group">
+                        <label>用戶名称：</label>
+                        <input type="text" class="form-control" id="truename" name="truename">
+                    </div>
+                    <div class="form-group">
+                        <label>手机号：</label>
+                        <input type="text" class="form-control" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label>状态：</label>
+                        <select class="form-control" name="status" id="status">
+                            <option>未选择</option>
+                            <option value="0">申请中</option>
+                            <option value="1">同意</option>
+                            <option value="2">已发放</option>
+                            <option value="3">拒绝</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>用户等级：</label>
+                        <select class="form-control" name="user_class" id="user_class">
+                            <option value="">未选择</option>
+                            {foreach $user_class as $k=>$v}
+                            <option value="{$k}">{$v}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-noraml">注册时间段</label>
+                        <div class="input-daterange input-group">
+                            <input type="date" class="form-control" id="start">
+                            <span class="input-group-addon">到</span>
+                            <input type="date" class="form-control" id="end">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="button" style="margin-top:5px" id="search"><strong>搜 索</strong>
+                        </button>
+                    </div>
+                     <!-- <div class="form-group">
+                        <button class="btn btn-primary" type="button" style="margin-top:5px" id="to_excel"><strong>导出到Excel</strong>
+                        </button>
+                        <a href="/uploads/file.xlsx" download="提现列表.xlsx" id="download_excel" style="display:none;"><p>下载excel</p></a>
+                    </div> -->
+                </div>
+            </form>
+            <!--搜索框结束-->
+            <!--<div class="form-group clearfix col-sm-1">-->
+                <!--<a href="./userAdd"><button class="btn btn-outline btn-primary" type="button">添加用户</button></a>-->
+            <!--</div>-->
+            <div class="hr-line-dashed"></div>
+
+            <div class="example-wrap">
+                <div class="example">
+                    <table id="cusTable" data-height="700">
+                        <thead>
+                        <th data-field="id">id</th>
+                        <th data-field="nickname">用户名</th>
+                        <th data-field="user_class">用户等级</th>
+                        <th data-field="phone">手机号</th>
+                        <th data-field="money">提现金额</th>
+                        <th data-field="type">提现方式</th>
+                        <th data-field="charge">手续费</th>
+                        <th data-field="realmoney">到账金额</th>
+                        <!--<th data-field="msg">提现留言</th>-->
+                        <th data-field="created_at">提现申请时间</th>
+                        <th data-field="fafang">发放账号信息</th>
+                        <th data-field="status">状态</th>
+                        <th data-field="operate">操作</th>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <!-- End Example Pagination -->
+        </div>
+    </div>
+</div>
+
+<!-- End Panel Other -->
+<script src="__JS__/jquery.min.js?v=2.1.4"></script>
+<script src="__JS__/bootstrap.min.js?v=3.3.6"></script>
+<script src="__JS__/content.min.js?v=1.0.0"></script>
+<script src="__JS__/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="__JS__/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="__JS__/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="__JS__/plugins/suggest/bootstrap-suggest.min.js"></script>
+<script src="__JS__/plugins/layer/laydate/laydate.js"></script>
+<script src="__JS__/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="__JS__/plugins/layer/layer.min.js"></script>
+<script type="text/javascript">
+    function initTable() {
+        //先销毁表格
+        $('#cusTable').bootstrapTable('destroy');
+        //初始化表格,动态从服务器加载数据
+        $("#cusTable").bootstrapTable({
+            method: "get",  //使用get请求到服务器获取数据
+            url: "./index", //获取数据的地址
+            striped: true,  //表格显示条纹
+            pagination: true, //启动分页
+            pageSize: 10,  //每页显示的记录数
+            pageNumber:1, //当前第几页
+            pageList: [5, 10, 15, 20, 25],  //记录数可选列表
+            sidePagination: "server", //表示服务端请求
+            //设置为undefined可以获取pageNumber，pageSize，searchText，sortName，sortOrder
+            //设置为limit可以获取limit, offset, search, sort, order
+            queryParamsType : "undefined",
+            queryParams: function queryParams(params) {   //设置查询参数
+                var param = {
+                    pageNumber: params.pageNumber,
+                    pageSize: params.pageSize,
+                    truename:$('#truename').val(),
+                    phone:$('#phone').val(),
+                    user_class:$('#user_class').val(),
+                    status:$('#status').val(),
+                    start:$('#start').val(),
+                    end:$('#end').val(),
+                    excel:$('#excel').val()
+                };
+                return param;
+            },
+            onLoadSuccess: function(){  //加载成功时执行
+                layer.msg("加载成功", {time : 1000},function(){
+                    if($('#excel').val() == 'to_excel'){
+                        $('#download_excel>p').click();
+                        $('#excel').val('');
+                        initTable();
+                    }
+                });
+            },
+            onLoadError: function(){  //加载失败时执行
+                layer.msg("加载数据失败");
+            }
+        });
+    }
+
+    $(document).ready(function () {
+         //调用函数，初始化表格
+        initTable();
+
+        //当点击查询按钮的时候执行
+        $("#search").bind("click", initTable);
+        //导出excel表格事件
+        $('#to_excel').bind('click',function(){
+           $('#excel').val('to_excel');
+           initTable();
+        });
+    });
+
+
+    function agree(id){
+        layer.confirm('您确定要操作吗？', function(){
+            $.getJSON('./agree', {'id' : id}, function(res){
+                if(res.code == 1){
+                    layer.alert(res.msg);
+                    initTable();
+                }else{
+                    layer.alert(res.msg);
+                }
+            });
+        });
+           
+        // layer.close(index);
+    
+    }
+   function down(id){
+        layer.confirm('您确定要操作吗？', function(){
+           $.getJSON('./down', {'id' : id}, function(res){
+                if(res.code == 1){
+                    layer.alert(res.msg);
+                    initTable();
+                }else{
+                    layer.alert(res.msg);
+                }
+            });
+        });
+    }
+    function grant(id){
+    layer.confirm('确认发放吗?', {icon: 3, title:'提示'}, function(index){
+        $.getJSON('./grant', {'id' : id}, function(res){
+            if(res.code == 1){
+                layer.alert(res.msg);
+                initTable();
+            }else{
+                layer.alert(res.msg);
+            }
+        });
+            layer.close(index);
+        })
+    }
+</script>
+<script src="__JS__/layui/layui.js"></script>
+<script>
+    layui.use('layer',function(){
+        layer = layui.layer;
+    })
+    function imgs(img){
+        var imgs = {
+          "title": "", //相册标题
+          "id": 123, //相册id
+          "start": 0, //初始显示的图片序号，默认0
+          "data": [   //相册包含的图片，数组格式
+            {
+              "alt": "图片名",
+              "pid": 666, //图片id
+              "src": img, //原图地址
+              "thumb": img //缩略图地址
+            }
+          ]
+        }
+        layer.photos({
+          photos: imgs
+        });
+        $('.layui-layer-phimg')
+    }
+</script>
+</body>
+</html>

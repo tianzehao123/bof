@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑用户</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__CSS__/animate.min.css" rel="stylesheet">
+    <link href="__CSS__/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__CSS__/style.min.css?v=4.1.0" rel="stylesheet">
+    <!-- Sweet Alert -->
+    <link href="__CSS__/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+    <link href="__CSS__/plugins/treeview/bootstrap-treeview.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="__JS__/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="__JS__/radio/css/jquery-labelauty.css">
+
+
+    <style>
+        #province select{
+            margin-left:10px;
+            width:100px;
+            margin-top:8px;
+        }
+        ul { list-style-type: none;}
+		li { display: inline-block;}
+		input.labelauty + label { font: 12px "Microsoft Yahei";}
+    </style>
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12 ">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>用户注册</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="commentForm" method="post" onsubmit="return toVaild()">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">会员编号：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="code" type="text" class="form-control" name="code"   required="" aria-required="true" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">手机号码：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="phone" type="telphone" class="form-control" name="phone" required="" aria-required="true" onKeyUp="value=value.replace(/[^\d]/g,'')" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">登录密码：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="password" type="password" class="form-control" name="password" required="" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">确认密码：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="repassword" type="password" class="form-control" name="repassword" required="" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">交易密码：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="two_password" type="text" class="form-control" name="two_password" required="" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <label class="col-sm-3 control-label">vip级别：</label>
+                                <div class="input-group col-sm-4">
+                                    <select name="class_reg" class="form-control" required="" >
+                                   {foreach name="classs" item="row"}
+                                            <option value="{$key}">{$row}</option>
+                                        {/foreach}
+                                    </select>
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">推荐人编号：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="pcode" type="text" class="form-control" name="pcode" required="" autocomplete="off" >
+                            </div>
+                        </div>  
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">接点人编号：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="ncode" type="text" class="form-control" name="ncode" value="{$code}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">报单中心：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="bd_id" type="text" class="form-control" name="bd_id" required="" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">区间：</label>
+                            <div class="input-group col-sm-4">
+                                <ul class="dowebok" style="list-style-type: none;">
+                                    <li><input type="radio" name="region" data-labelauty="左区市场" value="1" {$region=='1'?'checked':'disabled'}></li>
+                                    <li><input type="radio" name="region" data-labelauty="右区市场" value="2" {$region=='2'?'checked':'disabled'}></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">营销模式：</label>
+                            <div class="input-group col-sm-4">
+                                <ul class="dowebok" style="list-style-type: none;">
+                                    <li><input type="radio" name="pattern" data-labelauty="手动销售" value="1" checked></li>
+                                    <li><input type="radio" name="pattern" data-labelauty="半托管销售" value="2" ></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">真实姓名：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="truename" type="text" class="form-control" name="truename" required="" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">身份证号：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="identity" type="text" class="form-control" name="identity" required="" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">开户银行：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="bank_name" type="text" class="form-control" name="bank_name" required="" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">银行卡号：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="bank_account" type="text" class="form-control" name="bank_account" required="" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">开户人：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="bank_user" type="text" class="form-control" name="bank_user" required="" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">开户支行：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="bank_branch" type="text" class="form-control" name="bank_branch" autocomplete="off" placeholder="(选填)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">支付宝账号：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="zhifubao" type="text" class="form-control" name="zhifubao" autocomplete="off" placeholder="(选填)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">微信账号：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="weixin" type="text" class="form-control" name="weixin" autocomplete="off" placeholder="(选填)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"></label>
+                            <div class="input-group col-sm-8">
+                                <!--<input type="button" value="提交" class="btn btn-primary" id="postform"/>-->
+                                <button class="btn btn-primary col-sm-6" type="submit">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- <script src="__JS__/jquery.min.js?v=2.1.4"></script> -->
+<script src="__JS__/radio/js/jquery-1.8.3.min.js"></script>
+<script src="__JS__/bootstrap.min.js?v=3.3.6"></script>
+<script src="__JS__/content.min.js?v=1.0.0"></script>
+<script src="__JS__/plugins/validate/jquery.validate.min.js"></script>
+<script src="__JS__/plugins/validate/messages_zh.min.js"></script>
+<script src="__JS__/plugins/iCheck/icheck.min.js"></script>
+<script src="__JS__/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="__JS__/plugins/layer/laydate/laydate.js"></script>
+<script src="__JS__/plugins/suggest/bootstrap-suggest.min.js"></script>
+<script src="__JS__/plugins/layer/layer.min.js"></script>
+<script src="__JS__/radio/js/jquery-labelauty.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		$(':input').labelauty();
+	});
+
+    //表单提交
+    function toVaild(){
+        var data = decodeURIComponent($('#commentForm').serialize(),true);
+        var url = "{:url('register')}";
+        var phone = /^1[3|4|5|7|8][0-9]\d{8}$/;
+        var IDcart = /(^\d{15}$)|(^\d{17}([0-9]|X|x)$)/;
+        var Bankcart = $("input[name='bank_account']").val();
+        if(!phone.test($("input[name='phone']").val())){ 
+            swal("请输入正确的手机号", "", "error");
+            return false;
+        }
+        if(!IDcart.test($("input[name='identity']").val())){
+            swal("请输入正确的身份证号", "", "error");
+            return false;
+        }
+        if (Bankcart.length < 16 || Bankcart.length > 19) {
+            swal("请输入正确的银行卡号", "", "error");
+            return false;
+        }
+        if(!/^\d*$/.test(Bankcart)){
+            swal("请输入正确的银行卡号","","error");
+            return false;
+        }         
+        $.ajax({
+            type:"POST",
+            url:url,
+            data:data,// 你的formid
+            async: false,
+            error: function(request) {
+                layer.close(jz);
+                swal("网络错误!", "", "error");
+            },
+            success: function(data) {
+               if(data.code=='1'){
+                   swal({
+                        title:'注册成功',
+                        text:'',
+                        type:'success',
+                    },function(){
+                        window.location.href="{:url('tree')}";
+                    });
+               }else{
+                    swal(data.msg,"","error");
+               }
+            }
+        });
+
+        return false;
+    }
+
+    //表单验证
+    $(document).ready(function(){
+        $(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",});
+    });
+
+    $.validator.setDefaults({
+        highlight: function(e) {
+            $(e).closest(".form-group").removeClass("has-success").addClass("has-error")
+        },
+        success: function(e) {
+            e.closest(".form-group").removeClass("has-error").addClass("has-success")
+        },
+        errorElement: "span",
+        errorPlacement: function(e, r) {
+            e.appendTo(r.is(":radio") || r.is(":checkbox") ? r.parent().parent().parent() : r.parent())
+        },
+        errorClass: "help-block m-b-none",
+        validClass: "help-block m-b-none"
+    });
+
+      
+</script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用戶管理</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__CSS__/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="__CSS__/animate.min.css" rel="stylesheet">
+    <link href="__CSS__/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="__CSS__/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link rel="stylesheet" href="__JS__/plugins/layui/css/layui.css">
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>用戶列表</h5>
+        </div>
+        <div class="ibox-content">
+            <!--搜索框开始-->
+            <form id='commentForm' role="form" method="post" class="form-inline">
+                <div class="content clearfix m-b">
+                    <div class="form-group">
+                        <label>用戶昵称：</label>
+                        <input type="text" class="form-control" id="nickname" name="nickname">
+                    </div>
+                    <div class="form-group">
+                        <label>手机号：</label>
+                        <input type="text" class="form-control" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="button" style="margin-top:5px" id="search"><strong>搜 索</strong>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!--搜索框结束-->
+            <!--<div class="form-group clearfix col-sm-1">-->
+                <!--<a href="./userAdd"><button class="btn btn-outline btn-primary" type="button">添加用户</button></a>-->
+            <!--</div>-->
+            <div class="hr-line-dashed"></div>
+
+            <div class="example-wrap">
+                <div class="example">
+                    <table id="cusTable" data-height="700">
+                        <thead>
+                        <th data-field="id">id</th>
+                        <th data-field="nickname">会员昵称</th>
+                        <th data-field="phone">会员手机号</th>
+                        <th data-field="t_class">用户等级</th>
+                        <th data-field="money">业绩</th>
+                        <th data-field="operate">操作</th>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <!-- End Example Pagination -->
+        </div>
+    </div>
+</div>
+<div class="ibox-content" id="ibox-content" style="display:none;">
+    <form class="form-horizontal m-t">
+        <input type="hidden" id="user_id">
+        <div class="form-group">
+            <label class="col-sm-6 control-label">调节用户余额(当前余额<b id="balance"></b>)：</label>
+            <div class="input-group col-sm-5">
+                <input id="money" type="text" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-6">
+                <button class="btn btn-primary" type="button" id="button">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- 用户详情 -->
+<div class="ibox-content profile-content" id="user_detail" style="display:none;font-size:16px;">
+    <table>
+        <tr>
+            <td>用户手机号：</td>
+            <td class="detail_phone"></td>
+        </tr>
+        <tr>
+            <td>昵称：</td>
+            <td class="detail_nickname"></td>
+        </tr>
+        <tr>
+            <td>真实姓名：</td>
+            <td class="detail_truename"></td>
+        </tr>
+        <tr>
+            <td>性别：</td>
+            <td class="detail_sex"></td>
+        </tr>
+        <tr>
+            <td>微信二维码：</td>
+            <td><img class="detail_qrcode" style="max-height:75px;" src="__IMG__/a1.jpg"></td>
+        </tr>
+        <tr>
+            <td>头像：</td>
+            <td><img class="detail_headimg" style="max-height:75px;" src="__IMG__/a1.jpg"></td>
+        </tr>
+        <tr>
+            <td>消费基金：</td>
+            <td class="detail_score"></td>
+        </tr>
+        <tr>
+            <td>余额：</td>
+            <td class="detail_balance"></td>
+        </tr>
+        <tr>
+            <td>注册时间：</td>
+            <td class="detail_created_at"></td>
+        </tr>
+        <tr>
+            <td>最近登录时间：</td>
+            <td class="detail_updated_at"></td>
+        </tr>
+    </table>
+</div>
+<!-- 用户详情结束 -->
+<!-- End Panel Other -->
+<script src="__JS__/jquery.min.js?v=2.1.4"></script>
+<script src="__JS__/bootstrap.min.js?v=3.3.6"></script>
+<script src="__JS__/content.min.js?v=1.0.0"></script>
+<script src="__JS__/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="__JS__/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="__JS__/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="__JS__/plugins/suggest/bootstrap-suggest.min.js"></script>
+<script src="__JS__/plugins/layer/laydate/laydate.js"></script>
+<script src="__JS__/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="__JS__/plugins/layer/layer.min.js"></script>
+<script type="text/javascript">
+    function initTable() {
+        //先销毁表格
+        $('#cusTable').bootstrapTable('destroy');
+        //初始化表格,动态从服务器加载数据
+        $("#cusTable").bootstrapTable({
+            method: "get",  //使用get请求到服务器获取数据
+            url: "./index", //获取数据的地址
+            striped: true,  //表格显示条纹
+            pagination: true, //启动分页
+            pageSize: 10,  //每页显示的记录数
+            pageNumber:1, //当前第几页
+            pageList: [5, 10, 15, 20, 25],  //记录数可选列表
+            sidePagination: "server", //表示服务端请求
+            //设置为undefined可以获取pageNumber，pageSize，searchText，sortName，sortOrder
+            //设置为limit可以获取limit, offset, search, sort, order
+            queryParamsType : "undefined",
+            queryParams: function queryParams(params) {   //设置查询参数
+                var param = {
+                    pageNumber: params.pageNumber,
+                    pageSize: params.pageSize,
+                    phone:$('#phone').val(),
+                    nickname:$('#nickname').val(),
+                };
+                return param;
+            },
+            onLoadSuccess: function(){  //加载成功时执行
+                layer.msg("加载成功", {time : 1000});
+            },
+            onLoadError: function(){  //加载失败时执行
+                layer.msg("加载数据失败");
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        //调用函数，初始化表格
+        initTable();
+
+        //当点击查询按钮的时候执行
+        $("#search").bind("click", initTable);
+    });
+
+    function userEdit(id,money,name){
+        w = layer.open({
+            type: 1,
+            shade: false,
+            title: '调节'+name+'的余额', //不显示标题
+            area:['500px','210px'],
+            content: $('#ibox-content'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+            success : function(){
+                $('#balance').text(money);
+                $('#user_id').val(id);
+            }
+        });
+    }
+
+    $('#button').on('click',function(){
+        var id = $('#user_id').val();
+        var money = $('#money').val();
+        $.getJSON('./userEdit', {'id':id,'money':money}, function(res){
+            if(res.code == 1){
+                layer.msg('编辑成功',{
+                    time : '1000'
+                },function(){
+                    initTable();
+                    layer.close(w);
+                });
+
+            }else{
+                layer.alert('编辑失败');
+            }
+        });
+    });
+
+    function lock(id){
+        layer.confirm('你确定要执行此操作吗?', {icon: 3, title:'锁定/解锁账号'}, function(index){
+          
+        $.getJSON("./lock", {'id' : id}, function(res){
+            layer.msg('操作成功');
+
+        });
+          layer.close(index);
+          initTable();
+        });
+    }
+
+    //用户详情
+    function user_detail(id){
+        $.getJSON("{:url('user/detail')}", {'id' : id}, function(res){
+            var user = res.user;
+            user.sex = user.sex == '2'?'男':'女';
+            $('.detail_phone').text(user.phone);
+            $('.detail_nickname').text(user.nickname);
+            $('.detail_truename').text(user.truename);
+            $('.detail_sex').text(user.sex);
+            $('.detail_qrcode').attr('src',user.qrcode);
+            $('.detail_headimg').attr('src',user.headimg);
+            $('.detail_score').text(user.score);
+            $('.detail_balance').text(user.balance);
+            $('.detail_created_at').text(timeToString(user.created_at * 1000));
+            $('.detail_updated_at').text(timeToString(user.updated_at * 1000));
+            //捕获页
+            layer.open({
+                type: 1,
+                shade: false,
+                area: ['400px', '500px'], //宽高
+                title: '用户详情', //不显示标题
+                content: $('#user_detail'),
+            });
+        });
+    }
+
+    //资金明细
+    function user_account(id){
+        $.getJSON("{:url('user/account')}", {'id' : id}, function(res){
+            var account_content = $('#account_content');
+            var content = '';
+            account_content.text('');
+            for(var i = 0;i < res.length;i++){
+                content = '';
+                content += '<tr>';
+                content += '<td>'+res[i].id+'</td>';
+                content += '<td>'+res[i].balance+'</td>';
+                content += '<td>'+res[i].score+'</td>';
+                content += '<td>'+res[i].type+'</td>';
+                content += '<td>'+res[i].create_at+'</td>';
+                content += '</tr>';
+                account_content.append(content);
+            }
+            //捕获页
+            layer.open({
+                type: 1,
+                shade: false,
+                area: ['500px', '500px'], //宽高
+                title: '用户资金明细', //不显示标题
+                content: $('#user_account'),
+            });
+        });
+    }
+
+    function userDel(id){
+        layer.confirm('确认删除此用戶?', {icon: 3, title:'提示'}, function(index){
+            //do something
+            $.getJSON('./userDel', {'id' : id}, function(res){
+                if(res.code == 1){
+                    layer.alert('删除成功');
+                    initTable();
+                }else{
+                    layer.alert('删除失败');
+                }
+            });
+
+            layer.close(index);
+        })
+
+    }
+
+    function timeToString(time){
+        var date = new Date(time);
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        D = date.getDate() + ' ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = date.getSeconds();
+        return Y+M+D+h+m+s;
+    }
+</script>
+</body>
+</html>

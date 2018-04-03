@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>直属关系</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__CSS__/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="__CSS__/animate.min.css" rel="stylesheet">
+    <link href="__CSS__/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="__CSS__/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="__JS__/plugins/layui/css/layui.css" rel="stylesheet" >
+    <link href="__CSS__/plugins/jsTree/style.min.css" rel="stylesheet">
+
+
+</head>
+<body class="gray-bg">
+<div class="col-sm-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <form action="recommend.html" method="post">
+                <div class="content clearfix m-b">
+	                     <div class="form-group" style="width:30%;float:left">
+	                        <label>用戶编号：</label>
+	                        <input type="text" class="form-control" id="nickname" name="code">
+	                     </div>
+	                     <input class="btn btn-primary" type="submit" style="margin-left:5px;margin-top:24px">
+	               	  	 </button>
+	                     <a class="btn btn-success" type="button" href="recommend.html" style="margin-top:24px"><strong>刷新</strong>
+	               	  	 </a>
+                  </div>
+             </form>	
+            <div class="ibox-tools">
+
+            </div>
+        </div>
+        <div class="ibox-content">
+        	<span class="btn btn-success"><strong id="code">{$code}</strong></span>
+			<div id="using_json" style="margin-left:18px"></div>
+        </div>
+    </div>
+</div>
+
+<!-- End Panel Other -->
+<script src="__JS__/jquery.min.js?v=2.1.4"></script>
+<script src="__JS__/bootstrap.min.js?v=3.3.6"></script>
+<script src="__JS__/content.min.js?v=1.0.0"></script>
+<script src="__JS__/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="__JS__/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="__JS__/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="__JS__/plugins/suggest/bootstrap-suggest.min.js"></script>
+<script src="__JS__/plugins/layer/laydate/laydate.js"></script>
+<script src="__JS__/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="__JS__/plugins/layer/layer.min.js"></script>
+<script src="__JS__/layui/layui.all.js"></script>
+<script src="__JS__/layui/layui.js"></script>
+<script src="__JS__/plugins/jsTree/jstree.min.js"></script>
+
+<script>
+
+        $(function() {
+            var code = $("#code").text();
+            $('#using_json').jstree({  
+                'core' : {  
+                    'check_callback': true,
+                    "data" : function (obj, callback){  
+                            $.ajax({  
+                                url : "recommend",  
+                                dataType : "json",  
+                                type : "POST", 
+                                data:{"code":code}, 
+                                success : function(data) {
+                                    console.log(data);  
+                                    if(data.status==1) {
+                                         callback.call(this,data.data);
+                                    }else{
+                                        $("#using_json").html("没有子级!");  
+                                    }  
+                                }  
+                            });  
+                    }  
+                },  
+                "plugins" : [ "sort"]
+            }).bind("select_node.jstree", function(event, data) {
+                var inst = data.instance;  
+                var selectedNode = inst.get_node(data.selected);  
+                //console.info(selectedNode.aria-level);  
+                var level = $("#"+selectedNode.id).attr("aria-level");
+                
+
+                // if(parseInt(level) <= 20){  
+                    loadConfig(inst, selectedNode);  
+                // }  
+
+            });
+        });  
+        function loadConfig(inst, selectedNode){  
+            var temp = selectedNode.id;
+            //inst.open_node(selectedNode);  
+            //alert(temp);
+            $.ajax({  
+                url : "recommend",  
+                dataType : "json",  
+                type : "POST",
+                data :{"code":temp},
+                success : function(res) {
+                    var data = res.data;
+                    if(res.status==1){
+                            if(data) {
+                               selectedNode.children = [];  
+                               $.each(data, function (i, item) {  
+
+                                        var obj = {text:item.text,icon:"glyphicon glyphicon-user",id:item.id};   
+                                        inst.create_node(selectedNode,obj,"last");  
+                               });  
+                               inst.open_node(selectedNode);
+                            }else{  
+                                $("#jstree_div").html("暂无数据！");  
+                            }  
+                    }
+
+                }  
+            });  
+        }  
+    </script>
+    <script>
+  
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加商品</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__CSS__/animate.min.css" rel="stylesheet">
+    <link href="__CSS__/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="__CSS__/style.min.css?v=4.1.0" rel="stylesheet">
+    <!-- Sweet Alert -->
+    <link href="__CSS__/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="__JS__/plugins/layui/css/layui.css" rel="stylesheet">
+    <link href="__JS__/umeditor/themes/default/css/umeditor.css" type="text/css" rel="stylesheet">
+    <style>
+        .layui-upload-button{
+            display: none;
+        }
+    </style>
+</head>
+<body class="gray-bg">
+<!-- 图片上传 -->
+<form id="fmform" action="" method="POST" enctype="multipart/form-data">
+    <input type="hidden" value="fmimg" name="imgtype"/>
+    <input id="fmimg" style="display: none;" name="files" type="file" onchange="upload('fmform','imgurl')"/>
+</form>
+<input type="file" name="files" id="canshuurl" class="layui-upload-file" style="display: none;">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>添加商品</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="commentForm" method="post" onsubmit="return toVaild()">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">商品名称：</label>
+                            <div class="input-group col-sm-4">
+                                <input id="name" type="text" class="form-control" name="name" required=""
+                                       aria-required="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">商品价格：</label>
+                            <div class="input-group col-sm-3">
+                                <input id="price" type="text" class="form-control" name="price" required=""
+                                       aria-required="true">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">市场价格：</label>
+                            <div class="input-group col-sm-3">
+                                <input id="market_price" type="text" class="form-control" name="market_price" required=""
+                                       aria-required="true">
+                            </div>
+                        </div>
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-sm-3 control-label">商品库存：</label>-->
+                            <!--<div class="input-group col-sm-3">-->
+                                <!--<input id="num" type="text" class="form-control" name="num" required=""-->
+                                       <!--aria-required="true">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-sm-3 control-label">邮费：</label>-->
+                            <!--<div class="input-group col-sm-2">-->
+                                <!--<input id="postage" type="text" class="form-control" name="postage">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!-- <div class="form-group">
+                            <label class="col-sm-3 control-label">单位：</label>
+                            <div class="input-group col-sm-1">
+                                <input id="unit" type="text" class="form-control" name="unit">
+                            </div>
+                        </div> -->
+                       <!--  <div class="form-group">
+                            <label class="col-sm-3 control-label">折扣：</label>
+                            <div class="input-group col-sm-1">
+                                <input id="zhekou" type="text" class="form-control" name="zhekou">
+                            </div>
+                        </div> -->
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-sm-3 control-label">是否精品：</label>-->
+                            <!--是: <input type="radio" value="1" name="is_jing" style="margin-top:11px;margin-right:20px;">-->
+                            <!--否: <input type="radio" value="2" name="is_jing" >-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-sm-3 control-label">是否促销：</label>-->
+                            <!--是: <input type="radio" value="1" name="is_cu" style="margin-top:11px;margin-right:20px;">-->
+                            <!--否: <input type="radio" value="2" name="is_cu" >-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-sm-3 control-label">促销时间段</label>-->
+                            <!--<div class="input-group">-->
+                                <!--<input type="datetime-local" class="form-control" id="start" name="cu_start">-->
+                                <!--<span class="input-group-addon">到</span>-->
+                                <!--<input type="datetime-local" class="form-control" id="end" name="cu_end">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-sm-3 control-label">促销价格：</label>-->
+                            <!--<div class="input-group col-sm-4">-->
+                                <!--<input id="cu_price" type="text" class="form-control" name="cu_price">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">商品分类：</label>
+                            <div class="input-group col-sm-2">
+                                <select name="cid" id="cid" class="form-control" onchange="types(this)">
+                                    {foreach $class as $v}
+                                    <option value="{$v.id}">{$v.class}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                        </div>
+                        <div  class="form-group">
+                            <label class="col-sm-3 control-label" id="typeName">赠送获赠积分数量：</label>
+                            <div class="input-group col-sm-2">
+                                <input type="text" class="form-control"  name="receive" id="typeTwo">
+                                <div id="typeText" style="height:40px;line-height:40px;">购买报单产品赠送</div>
+                            </div>                           
+                        </div>
+                        <div  class="form-group" id="gclass">
+                            <label class="col-sm-3 control-label">报单产品类别：</label>
+                            <div class="input-group col-sm-2">
+                                 <select name="class" class="form-control">
+                                     <option value="1">普卡报单产品</option>
+                                     <option value="2">银卡报单产品</option>
+                                     <option value="3">金卡报单产品</option>
+                                     <option value="4">白金卡报单产品</option>
+                                     <option value="5">黑金卡报单产品</option>
+                                     <option value="6">钻卡报单产品</option>
+                                     <option value="7">蓝钻报单产品</option>
+                                 </select>
+                            </div>                           
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">商品缩略图：</label>
+                            <div class="col-sm-3">
+                                <input type="hidden" value="" name="img" id="img"/>
+                                <img id="imgurl" name="imgurl" style="width: 200px;height: 200px;" class="form-control"
+                                     src="" onclick="javascript:$('#fmimg').click();"/>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label class="col-sm-3 control-label">商品参数：</label>
+                            <div class="col-sm-3">
+                                <input type="hidden" value="" id="canshu" name="canshu"/>
+                                <img style="width: 200px;height: 200px;" class="form-control canshuurl"
+                                     src="" onclick="javascript:$('#canshuurl').click();"/>
+                            </div>
+                        </div> -->
+                       <!--  <div class="form-group">
+                           <label class="col-sm-3 control-label">商品简介：</label>
+                           <div class="input-group col-sm-4">
+                               <textarea id="remark" type="text" class="form-control" name="remark"
+                                         required="" aria-required="true"></textarea>
+                           </div>
+                       </div> -->
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">是否上架：</label>
+                            是: <input type="radio" value="1" name="is_delete" style="margin-top:11px;margin-right:20px;">
+                            否: <input type="radio" value="2" name="is_delete" >
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <textarea id="myEditor" type="text" class="form-control myEditor" name="description" style="height:500px;"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-3">
+                                <!--<input type="button" value="提交" class="btn btn-primary" id="postform"/>-->
+                                <button class="btn btn-primary" type="submit">提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="__JS__/jquery.min.js?v=2.1.4"></script>
+<script src="__JS__/bootstrap.min.js?v=3.3.6"></script>
+<script src="__JS__/content.min.js?v=1.0.0"></script>
+<script src="__JS__/plugins/validate/jquery.validate.min.js"></script>
+<script src="__JS__/plugins/validate/messages_zh.min.js"></script>
+<script src="__JS__/plugins/iCheck/icheck.min.js"></script>
+<script src="__JS__/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="__JS__/plugins/layer/laydate/laydate.js"></script>
+<script src="__JS__/plugins/suggest/bootstrap-suggest.min.js"></script>
+<script src="__JS__/plugins/layer/layer.min.js"></script>
+<script src="__JS__/plugins/layui/layui.js"></script>
+<script type="text/javascript" src="__JS__/umeditor/third-party/jquery.min.js"></script>
+<script type="text/javascript" src="__JS__/umeditor/third-party/template.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__JS__/umeditor/umeditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="__JS__/umeditor/umeditor.min.js"></script>
+<script type="text/javascript" src="__JS__/umeditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+    var um = UM.getEditor('myEditor');
+    //表单提交
+    function toVaild() {
+        var jz;
+        var url = "./goodsAdd";
+//        console.log($('#commentForm').serialize());
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {'data': $('#commentForm').serialize()},// 你的formid
+            async: false,
+            beforeSend: function () {
+                jz = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
+            },
+            error: function (request) {
+                layer.close(jz);
+                swal("网络错误!", "", "error");
+            },
+            success: function (data) {
+                //关闭加载层
+                layer.close(jz);
+                if (data.code == 1) {
+                    swal(data.msg, "", "success");
+                } else {
+                    swal(data.msg, "", "error");
+                }
+            }
+        });
+        return false;
+    }
+</script>
+</body>
+</html>
+<!-- <script src="__JS__/jquery-2.0.3.min.js"></script> -->
+<script src="__JS__/jquery.form.js"></script>
+<script type="text/javascript">
+    function upload(fromID, imgid) {
+        var vars = $("#" + fromID);
+        var options = {
+            type: "POST",
+            url: "{:url('Backend/File/upload')}",// 你的formid
+            dataType: 'json',
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                // console.log(data);
+                if (data['code'] == 1) {
+                    $("#" + imgid).attr('src', data['data']);
+                    $("#img").val(data['data']);
+                }
+            }
+        };
+        vars.ajaxSubmit(options);
+        // return false;
+    }
+
+    layui.use('upload', function(){
+        layui.upload({
+            url: "{:url('Backend/File/upload')}",
+            success: function(res){
+                console.log(res); //上传成功返回值，必须为json格式
+                $('.canshuurl').attr('src',res.data);
+                $('#canshu').val(res.data);
+            }
+        });
+    });
+
+
+   function types(data){
+       if($(data).val()==92){
+            $("#typeName").text('赠送获赠积分数量');
+            $("#typeTwo").attr('name','receive');
+            $("#typeText").text('购买报单产品赠送');
+            $("#gclass").css('display','block');
+       }else{
+            $("#typeName").text('消费返还的时间');
+            $("#typeTwo").attr('name','consumption');
+            $("#typeText").text('返还时间按整天填写');
+            $("#gclass").css('display','none');
+       }
+   }
+</script>

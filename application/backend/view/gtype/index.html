@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品分类</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__CSS__/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="__CSS__/animate.min.css" rel="stylesheet">
+    <link href="__CSS__/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="__CSS__/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="__JS__/plugins/layui/css/layui.css" rel="stylesheet" >
+    <link href="__CSS__/plugins/jsTree/style.min.css" rel="stylesheet">
+  <style>
+     .myi:hover{
+          display:inline-block;
+     }
+  </style>
+</head>
+<body class="gray-bg">
+<div class="col-sm-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <div class="content clearfix m-b">
+            <button class="btn btn-success" onclick="TypeAdd()">添加分类</button>
+            <a class="btn btn-success" type="button" href="index.html"><strong>刷新</strong>
+                         </a>
+            </div>   
+            <div class="ibox-tools">
+
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div id="using_json"></div>
+        </div>
+    </div>
+</div>
+
+<div  id="TypeAdd" style="display:none;width:95%;padding:10px;">
+    <div class="formadd">
+        <div style="margin-bottom:20px;"></div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">分类名称：</label>
+            <div class="input-group col-sm-8">
+                <input id="type_names" type="text" class="form-control" required="" aria-required="true" value="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">父级分类：</label>
+            <div class="input-group col-sm-8">
+                <select class="form-control" required="" aria-required="true" id="type_pid" >
+                     <option value="0">顶级分类</option>
+                     {volist name="list" id="vo"}
+                         <option value="{$vo['id']}">{$vo['class']}</option>
+                     {/volist}
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">排序</label>
+            <div class="input-group col-sm-8">
+                <input id="type_sort" type="text" class="form-control"  placeholder="不填默认排最后" >
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-8">
+                <button class="btn  btn-danger" type="submit" onclick="DoAdd(this)">&nbsp提交&nbsp</button>
+            </div>
+        </div>
+  </div>
+</div>
+
+ 
+
+
+<!-- End Panel Other -->
+<script src="__JS__/jquery.min.js?v=2.1.4"></script>
+<script src="__JS__/bootstrap.min.js?v=3.3.6"></script>
+<script src="__JS__/content.min.js?v=1.0.0"></script>
+<script src="__JS__/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="__JS__/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="__JS__/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="__JS__/plugins/suggest/bootstrap-suggest.min.js"></script>
+<script src="__JS__/plugins/layer/laydate/laydate.js"></script>
+<script src="__JS__/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="__JS__/plugins/layer/layer.min.js"></script>
+<script src="__JS__/layui/layui.all.js"></script>
+<script src="__JS__/layui/layui.js"></script>
+<script src="__JS__/plugins/jsTree/jstree.min.js"></script>
+<script>
+    $(function() {
+        $('#using_json').jstree({  
+            'core' : {  
+                'check_callback': true,
+                 'data':function (obj,callback){
+                      $.post('index.html',{pid:0},function(data){
+                          if(data.status==1){  
+                               callback.call(this,data.data);
+                          }else{
+                              $("#using_json").html("没有子级!");  
+                          }  
+                      });
+                  }
+                },
+            "plugins" : [ "sort"]
+        }).bind("select_node.jstree", function(event, data) {
+              
+        });
+    });   
+</script>
+
+<script>
+     //添加分类
+      function TypeAdd(){
+
+         layer.open({
+                type:1,
+                skin: 'layui-layer-lan', //加上边框
+                title:'添加分类',
+                area:['380px','320px'],
+                content:$("#TypeAdd").html(),
+         });
+      }   
+
+
+
+      function DoAdd(row){
+
+         var name  = $(row).parents('.formadd').find('#type_names').val();
+         var pid  = $(row).parents('.formadd').find('#type_pid').val();
+         var sort  = $(row).parents('.formadd').find('#type_sort').val();
+   
+         if(name==''){
+             alert('分类名称不能为空');
+             return;
+         }
+
+         $.post('gtypeadd.html',{'name':name,'pid':pid,'sort':sort},function(data){
+                layer.closeAll();
+                layer.alert(data);
+                setTimeout(function(){
+                    window.location.href="index.html";
+
+                },1000);
+                
+         });    
+    }
+
+
+    function del(id,msg)
+    {
+       layer.confirm('您是否要删除<span style=\'color:#f00\'>'+msg+'</span>这个分类?', {
+            title:"删除分类",
+            btn: ['删除','取消'] //按钮
+         }, function(){
+           $.post('gtypedel.html',{'id':id},function(res){
+                layer.alert(res);
+                setTimeout(function(){
+                    window.location.href="index.html";
+                },1000);
+           });
+        }, function(){
+            layer.msg('取消成功', {icon: 1});
+        });
+    }
+</script>
+</body>
+</html>
+

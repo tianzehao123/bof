@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="__JS2__/jquery.min.js"></script>
+</head>
+<body>
+<button onclick="btn()" style="width:120px;height:40px;background:#333;color:#fff">测试</button>
+</body>
+<script>
+
+    function btn(){
+        $.ajax({
+            "type":"post",
+            "url":"{:url('/home/business/activation')}",
+            "data":{'need_integral':'0','integral':'0','phone':'15617737643','id':'63'},
+            success:function(data){
+                console.log(data);
+            },error:function(){
+                console.log("ajax链接失败");
+            }
+        });
+    }
+
+</script>
+</html>

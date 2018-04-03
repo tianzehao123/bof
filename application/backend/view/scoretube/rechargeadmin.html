@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拨出查询</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__CSS__/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="__CSS__/animate.min.css" rel="stylesheet">
+    <link href="__CSS__/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="__CSS__/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link rel="stylesheet" href="__JS__/plugins/layui/css/layui.css">
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>充值管理</h5>
+        </div>
+        <div class="ibox-content">
+            <!--搜索框开始-->
+            <form id='commentForms' role="form" method="post" class="form-inline" onsubmit="return toVaild()">
+                <div class="content clearfix m-b">
+                    <div class="form-group">
+                        <label>会员编号：</label>
+                        <input type="text" class="form-control" id="from_uid" name="codes" AUTOCOMPLETE="off">
+                        <input type="text" class="form-control" id="fromuids" name="" readonly="" style="cursor: pointer;border:none;width: 200px" value="请输入会员编号">
+                    </div>&nbsp;&nbsp;
+                    <div class="form-group">
+                        <select name="type" class="form-control">
+                            <option value="reg_score">后台充值注册积分</option>
+                            <option value="prize_score">后台充值奖励积分</option>
+                            <option value="con_score">后台充值消费积分</option>
+                            <option value="ele_score">后台充值电子积分</option>
+                            <option value="pay_score">后台充值购物积分</option>
+                            <option value="ft_score">后台充值复投积分</option>
+                        </select>
+                    </div>&nbsp;&nbsp;
+                    <div class="form-group">
+                        <label>充值金额：</label>
+                        <input type="text" class="form-control" id="score" name="score">
+                    </div>&nbsp;&nbsp;
+                    <div class="form-group">
+                        <label>备注：</label>
+                        <input type="text" class="form-control" id="remark" name="remark" value="后台充值">
+                    </div>&nbsp;&nbsp;
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit" style="margin-top:5px;width:50px" id="confirms"><strong>确认</strong>
+                        </button>
+                    </div>
+            </form>
+                    <div class="form-group">
+                         <input type="text" class="form-control" value="负数为扣除" disabled="" style="color:red;font-weight: bold;width:100px;background:white;border:none">
+                    </div> 
+                </div>
+        </div>
+        <div class="ibox-content">
+            <!--搜索框开始-->
+            <form id='commentForm' role="form" method="post" class="form-inline">
+                <div class="content clearfix m-b">
+                <div class="form-group">
+                    <label>会员编号：</label>
+                    <input type="text" class="form-control" id="ucode" name="ucode">
+                </div>&nbsp;&nbsp;
+                <div class="form-group">
+                    <label>状态：</label>
+                    <select name="style" class="form-control" id="style">
+                        <option value="">全部</option>
+                        <option value="0">未确认</option>
+                        <option value="1">已确认</option>
+                    </select>
+                </div>&nbsp;&nbsp;
+                <div class="form-group">
+                    <label>类型：</label>
+                    <select name="type" class="form-control" id="type">
+                            <option value="">全部</option>
+                            <option value="1">后台充值注册积分</option>
+                            <option value="3">后台充值奖励积分</option>
+                            <option value="7">后台充值购物积分</option>
+                            <option value="5">后台充值电子积分</option>
+                            <option value="10">后台充值复投积分</option>
+                            <option value="4">后台充值消费积分</option>
+                        </select>
+                </div>&nbsp;&nbsp;
+                <div class="form-group">
+                    <label >日期:</label>
+                    <div class="input-daterange input-group">
+                    <input type="date" class="form-control" id="start">
+                    <span class="input-group-addon">到</span>
+                    <input type="date" class="form-control" id="end">
+                </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" type="button" style="margin-top:5px" id="search"><strong>搜 索</strong>
+                    </button>
+                </div>
+        </div>
+        </form>
+            <!--搜索框结束-->
+            <!--<div class="form-group clearfix col-sm-1">-->
+            <!--<a href="./userAdd"><button class="btn btn-outline btn-primary" type="button">添加用户</button></a>-->
+            <!--</div>-->
+            <div class="hr-line-dashed"></div>
+            <div class="example-wrap">
+                <div class="example">
+                    <table id="cusTable" data-height="700">
+                        <thead>
+                        <th data-field="ucode" >会员编号</th>
+                        <th data-field="type" >充值类型</th>
+                        <th data-field="created_at" >充值时间</th>
+                        <th data-field="score" >充值金额</th>
+                        <th data-field="top">充值前金额</th>
+                        <th data-field="cur_score">充值后金额</th>
+                        <th data-field="remark">备注</th>
+                        <th data-field="style">状态</th>
+                        <th data-field="operate">操作</th>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <!-- End Example Pagination -->
+        </div>
+    </div>
+</div>
+
+<!-- 资金明细结束 -->
+<!-- End Panel Other -->
+<script src="__JS__/jquery.min.js?v=2.1.4"></script>
+<script src="__JS__/bootstrap.min.js?v=3.3.6"></script>
+<script src="__JS__/content.min.js?v=1.0.0"></script>
+<script src="__JS__/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="__JS__/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="__JS__/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="__JS__/plugins/suggest/bootstrap-suggest.min.js"></script>
+<script src="__JS__/plugins/layer/laydate/laydate.js"></script>
+<script src="__JS__/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="__JS__/plugins/layer/layer.min.js"></script>
+<script src="__JS__/layui/layui.all.js"></script>
+<script src="__JS__/layui/layui.js"></script>
+<script type="text/javascript">
+    $("#cusTable th").addClass('text-center');
+    $("#Totle th").addClass('text-center');
+    function initTable() {
+        //先销毁表格
+        $('#cusTable').bootstrapTable('destroy');
+        //初始化表格,动态从服务器加载数据
+        $("#cusTable").bootstrapTable({
+            method: "post",  //使用get请求到服务器获取数据
+            url: "rechargeadmin", //获取数据的地址
+            striped: true,  //表格显示条纹
+            pagination: true, //启动分页
+            pageSize: 10,  //每页显示的记录数
+            pageNumber:1, //当前第几页
+            pageList: [5, 10, 15, 20, 25],  //记录数可选列表
+            sidePagination: "server", //表示服务端请求
+            //设置为undefined可以获取pageNumber，pageSize，searchText，sortName，sortOrder
+            //设置为limit可以获取limit, offset, search, sort, order
+            queryParamsType : "undefined",
+            queryParams: function queryParams(params) {   //设置查询参数
+                var param = {
+                    pageNumber: params.pageNumber,
+                    pageSize: params.pageSize,
+                    ucode:$('#ucode').val(),
+                    style:$('#style').val(),
+                    type:$('#type').val(),
+                    start:$('#start').val(),
+                    end:$('#end').val(),
+                };
+                return param;
+            },
+            onLoadSuccess: function(){  //加载成功时执行
+                layer.msg("加载成功", {time : 1000});
+            },
+            onLoadError: function(){  //加载失败时执行
+                layer.msg("加载数据失败");
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        //调用函数，初始化表格
+        initTable();
+        //当点击查询按钮的时候执行
+        $("#search").bind("click", initTable);
+    });
+ 
+    $("#from_uid").keyup(function(){
+        a = $(this);
+        var code = a.val();
+        if(a.val()==''){
+            a.next("input").val('请输入编号').css('color',"red");
+            return;
+        }
+        $.ajax({
+            type:"POST",
+            url:"./search",
+            data:{code:code},
+            async: false,
+            error: function(request) {
+               layer.msg('服务器出错');
+            },
+            success: function(data) {
+                if(data.sta==1){
+                    a.next("input").val(data.data).css('color','green');
+                }else{
+                    a.next("input").val(data.data).css('color',"red");
+                }
+            }
+        });
+    })  
+
+
+   function toVaild(){
+        var url = "./recharge";
+        var data=decodeURIComponent($('#commentForms').serialize(),true);
+        $.ajax({
+            type:"POST",
+            url:url,
+            data:{'data' :data },// 你的formid
+            async: false,
+            error: function(request) {
+                swal("网络错误!", "", "error");
+            },
+            success: function(data) {
+                if(data.status == 1){
+                    initTable();
+                    swal(data.msg, "", "success");
+                }else{
+                    swal(data.msg, "", "error");
+                }
+            }
+        });
+
+        return false;
+    }
+
+    function affirms(id){
+         swal({
+            title:'确定充值吗？',
+            // text:'一旦删除，将无法恢复！',
+            type:'warning',
+            showCancelButton:true,
+            confirmButtonColor:'#DD6B55',
+            confirmButtonText:'确定',
+            cancelButtonText:'取消',
+            closeOnConfirm:false,
+            // closeOnCancel:false
+        },
+        function(){
+            $.ajax({
+                type: "post",
+                url: "./affirms",
+                data: {"id":id},
+                success: function (data) {
+                    if (data.status == 1) { 
+                        initTable();
+                        swal(data.msg,'' , "success");
+                    } else {
+                        swal(data.msg, '', "error");  //后端删除失败
+                    }
+                },
+                error: function () {  // ajax请求失败
+                    swal("啊哦。。。", "服务器走丢了。。。", "error");
+                }
+            })
+        })
+    }
+
+    function dels(id){
+         swal({
+            title:'确定删除吗？',
+            // text:'一旦删除，将无法恢复！',
+            type:'warning',
+            showCancelButton:true,
+            confirmButtonColor:'#DD6B55',
+            confirmButtonText:'确定',
+            cancelButtonText:'取消',
+            closeOnConfirm:false,
+            // closeOnCancel:false
+        },
+        function(){
+            $.ajax({
+                type: "post",
+                url: "./tubedels",
+                data: {"id":id},
+                success: function (data) {
+                    if (data.status == 1) { 
+                        initTable();
+                        swal(data.msg,'' , "success");
+                    } else {
+                        swal(data.msg, '', "error");  //后端删除失败
+                    }
+                },
+                error: function () {  // ajax请求失败
+                    swal("啊哦。。。", "服务器走丢了。。。", "error");
+                }
+            })
+        })
+    }
+</script>
+</body>
+</html>
+

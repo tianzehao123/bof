@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <!-- 公共css -->
+    <link rel="stylesheet" href="__CSS__/common.css">
+    <link rel="stylesheet" href="__FONTS__/iconfont.css">
+    <!-- 公共js -->
+    <script src="__JS__/app/common.js"></script>
+    <script src="__JS__/lib/jquery-1.11.3.js"></script>
+    <script src="__FONTS__/iconfont.js"></script>
+
+    <link rel="stylesheet" href="__CSS__/wy_main.css">
+</head>
+<title>bof-二维码</title>
+<style>
+    body{
+        background: #f6f6f6;
+    }
+    .header{
+        border-bottom: 1px solid #eaeaea;
+    }
+</style>
+<body>
+<!-- 头部 -->
+<header class="header wy_order_header">
+    <!--<a class="header_left iconfont icon-xiangzuo" href="#"></a>-->
+    <span>长按识别二维码</span>
+    <!-- <a class="header_right" href="javascript:void(0);"></a> -->
+</header>
+<!-- 中间部分 -->
+<div class="content wy_QR_content">
+    <div class="wy_QR_TOP">
+        <!-- <img class="wy_img" src="__IMG__/QR_CODEIMG.png" alt=""> -->
+        <p>长按识别下方二维码&nbsp;关注公众号</p>
+
+        <img class="wy_fige" src="__IMG__/wy_fige.png" alt="">
+    </div>
+
+    <img class="wy_youlianQR" src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket={$ticket}" alt="">
+</div>
+</body>
+</html>
+
+
+<!--<img src="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket={$ticket}">-->

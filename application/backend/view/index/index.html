@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台</title>
+    <link rel="shortcut icon" href="favicon.ico">
+	<link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+    <link href="__CSS__/animate.min.css" rel="stylesheet">
+    <link href="__CSS__/style.min.css?v=4.1.0" rel="stylesheet">
+</head>
+
+<body class="gray-bg">
+    <div style="margin-top:10px;">
+        <form class="col-sm-6 comment-reply">
+            <div class="form-group">
+                <textarea class="form-control" id="news_content" rows="6" placeholder="发送广播"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-primary guangbo">发送</button>
+            </div>
+        </form>
+        <div class="col-sm-3" >
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h5>今日新增会员量</h5>
+                    <h1 class="no-margins">{$day_user}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3" >
+            <div class="ibox">
+                <div class="ibox-content">
+                    <h5>累计会员总量</h5>
+                    <h1 class="no-margins">{$all_user}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="ibox">
+                <div class="ibox-content" >
+                    <h5>历史累计收入总额</h5>
+                    <h1 class="no-margins">{$orderMony}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="ibox">
+                <div class="ibox-content" >
+                    <h5>会员账户余额总计</h5>
+                    <h1 class="no-margins">{$user_all_money}</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="ibox">
+                <div class="ibox-content" >
+                    <h5>已发放提现总额</h5>
+                    <h1 class="no-margins">{$withdraw_true}</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="ibox">
+                <div class="ibox-content" >
+                    <h5>今日提现总额</h5>
+                    <h1 class="no-margins">{$day_withdraw_money}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="ibox">
+                <div class="ibox-content" >
+                    <h5>今日提现人数</h5>
+                    <h1 class="no-margins">{$day_withdraw_user_nums}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="ibox">
+                <div class="ibox-content" >
+                    <h5>今日已驳回提现</h5>
+                    <h1 class="no-margins">{$day_withdraw_false}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="__JS__/jquery.min.js?v=2.1.4"></script>
+    <script src="__JS__/bootstrap.min.js?v=3.3.6"></script>
+    <script src="__JS__/socket.io.js"></script>
+</body>
+</html>
+<script>
+    var user_name = "{$username}";
+    window.socket = io.connect('https://jinxinenjoy.com');
+    $('.guangbo').on('click',function(){
+        var nr = $('#news_content').val();
+        var web = '蓝海积分_web';
+        if(nr.length > 0){
+            socket.emit('news',{content:nr,user:user_name,web:web});
+            //alert('发送成功');
+        }
+    })
+</script>

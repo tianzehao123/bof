@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>订单管理</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+
+    <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+
+    <link href="__CSS__/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+
+    <link href="__CSS__/animate.min.css" rel="stylesheet">
+
+    <link href="__CSS__/style.min.css?v=4.1.0" rel="stylesheet">
+
+    <link href="__CSS__/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="__JS__/layui/css/layui.css">
+
+
+</head>
+
+<style type="text/css">
+
+    .tree-content{
+
+        overflow:hidden;
+
+    }
+
+    .tree-header{
+
+        height:240px;
+
+    }
+
+    .tree-block{
+
+        width:240px;
+
+        height:240px;
+
+        margin:0 auto;
+
+        border:1px solid #ccc;
+
+        box-shadow:0px 0px 10px #ccc;
+
+    }
+
+    .tree-body{
+
+        height:100px;
+
+    }
+
+    .body-1{
+
+        height:20px;
+
+    }
+
+    .body-1-head{
+
+        width:2px;
+
+        height:100%;
+
+        margin:0 auto;
+
+        background:#333;
+
+    }
+
+    .body-2{
+
+      height:2px;
+
+    }
+
+    .body-2-1{
+
+        height:2px;
+
+        background:#333;
+
+        width:50%;
+
+        margin:0 auto;        
+
+    }
+
+    .body-3{
+
+        height:80px;
+
+        width:50%;
+
+        margin:0 auto;
+
+    }
+
+    .body-left{
+
+        width:2px;
+
+        background:#333;
+
+        height:100%;
+
+        float:left;
+
+    }
+
+    .body-right{
+
+        width:2px;
+
+        background:#333;
+
+        height:100%;
+
+        float:right;
+
+    }
+
+    .block-header{
+
+        text-align:center;
+
+        height:30px;
+
+        line-height:30px;
+
+        margin-top:20px;
+
+        font-size:16px;
+
+    }
+
+  .block-class{
+
+        text-align:center;
+
+        height:60px;
+
+        line-height:30px;
+
+        font-size:16px;     
+
+  }
+
+  .block-all{
+
+     margin-top:10px;
+
+     font-size:16px;
+
+  }
+
+ .all_left{
+
+     width:35%;
+
+     margin-left:5%;
+
+     float:left;
+
+     height:60px;
+
+     line-height:30px;
+
+ }
+
+ .all_z{
+
+    width:20%;
+
+    float:left;
+
+    text-align:center;
+
+     height:60px;
+
+     line-height:30px;
+
+ }
+
+ .all_right{
+
+    width:35%;
+
+    float:left;
+
+    text-align:right;
+
+     height:60px;
+
+     line-height:30px;
+
+ }
+
+ .tree-block-false button{
+
+    width:120px;
+
+    margin-left:65px;
+
+    margin-top:100px;
+
+ }
+
+</style>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <!-- Panel Other -->
+
+    <div class="ibox float-e-margins">
+
+        <div class="ibox-title">
+
+            <h5>公排节点</h5>
+
+        </div>
+
+        <div class="ibox-content">
+
+            <!--搜索框开始-->
+
+            <form id='commentForm' role="form" action="tree.html" method="post" class="form-inline">
+
+                <div class="content clearfix m-b">
+
+                   
+
+                    <div class="form-group">
+
+                        <label>用户编号：</label>
+
+                        <input type="text" class="form-control" name="code" value="" placeholder="请输入用户编号" >
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <input type="submit" class="btn btn-primary" value="搜索">
+
+                    </div>
+
+                </div>
+
+            </form>
+
+            <!--搜索框结束-->
+
+            <div class="hr-line-dashed"></div>
+
+            <div id="tree">
+
+                  <div>
+
+                       <a class="btn btn-primary" href="tree.html?nid={$one['nid']}">返回上级</a>
+
+                  </div>
+
+                  <div class="tree-content">
+
+                        <div class="tree-header">
+
+                             <div class="tree-block">
+
+                                  <div class="tree-block-true">
+
+                                       <div class="block-header">
+
+                                            会员编号:<span>{$one['code']}</span>
+
+                                       </div>
+
+                                       <div class="block-class">
+
+                                            等级:{$one['class']}<br>
+
+                                            收益:{$one['class']}
+
+                                       </div>
+
+                                       <div class="block-a">
+
+                                            <a class="btn btn-primary" href="tree.html?code={$one['code']}" style="margin-left:80px">查看下级</a>
+
+                                       </div>
+
+                                       <div class="block-all">
+
+                                           <div class="all_left">
+
+                                                {$one['left_all_ach']}<br>{$one['left_ach']}
+
+                                           </div>
+
+                                           <div class="all_z">
+
+                                               总<br>余
+
+                                           </div>
+
+                                           <div class="all_right">
+
+                                                {$one['right_all_ach']}<br>{$one['right_ach']}
+
+                                           </div>
+
+                                       </div>
+
+                                  </div>
+
+                                  <div class="tree-block-false"></div>
+
+                             </div>
+
+                        </div>
+
+                     {neq name="$one['class']" value=""}
+
+                        <div class="tree-body">
+
+                             <div class="body-1"><div class="body-1-head"></div></div>
+
+                             <div class="body-2">
+
+                                 <div class="body-2-1">
+
+
+
+                                 </div>
+
+                             </div>
+
+                             <div class="body-3"><div class="body-left"></div><div class="body-right"></div></div>
+
+                        </div>
+
+                        <div class="tree-footer">
+
+ 
+
+                             {volist name="two" id="vo" key="k"}
+
+                                   <div class="tree-content" style="width:50%;float:left">
+
+                                        <div class="tree-header">
+
+                                             <div class="tree-block">
+
+                                                {eq name="$vo" value=""}
+
+                                                      <div class="tree-block-false">
+                                                           <button class="btn btn-primary register" code="{$one['code']}" region="{$k}">注册</button>
+                                                      </div>
+
+                                                      {else/}
+
+                                                     <div class="tree-block-true">
+
+                                                           <div class="block-header">
+
+                                                                会员编号:<span>{$vo['code']}</span>
+
+                                                           </div>
+
+                                                           <div class="block-class">
+
+                                                                等级:{$vo['class']}<br>
+
+                                                                收益:{$vo['class']}
+
+                                                           </div>
+
+                                                           <div class="block-a">
+
+                                                                 <a class="btn btn-primary" href="tree.html?code={$vo['code']}" style="margin-left:80px">查看下级</a>
+
+                                                           </div>
+
+                                                           <div class="block-all">
+
+                                                               <div class="all_left">
+
+                                                                    {$vo['left_all_ach']}<br>{$vo['left_ach']}
+
+                                                               </div>
+
+                                                               <div class="all_z">
+
+                                                                   总<br>余
+
+                                                               </div>
+
+                                                               <div class="all_right">
+
+                                                                    {$vo['right_all_ach']}<br>{$vo['right_ach']}
+
+                                                               </div>
+
+                                                           </div>
+
+                                                      </div>
+
+                                                {/eq}
+
+                                             </div>
+
+                                        </div>
+
+                                        {neq name="$vo" value=""}
+
+                                        {neq name="$vo['class']" value=""}
+
+                                        <div class="tree-body">
+
+                                             <div class="body-1"><div class="body-1-head"></div></div>
+
+                                             <div class="body-2">
+
+                                                 <div class="body-2-1">
+
+                                                     
+
+                                                 </div>
+
+                                             </div>
+
+                                             <div class="body-3"><div class="body-left"></div><div class="body-right"></div></div>
+
+                                        </div>
+
+                                        <div class="tree-footer">
+
+                                             {for start="1" end="3"}
+
+                                                <div class="tree-content" style="width:50%;float:left">
+
+                                                        <div class="tree-header">
+
+                                                             <div class="tree-block">
+
+                                                                    {eq name="$three[$vo['region']][$i]" value=""}
+
+                                                                          <div class="tree-block-false">
+                                                                                  <button class="btn btn-primary register" code="{$vo['code']}" region="{$i}">注册</button>
+                                                                          </div>
+
+                                                                          {else/}
+
+                                                                           <div class="block-header">
+
+                                                                                会员编号:<span>{$three[$vo['region']][$i]['code']}</span>
+
+                                                                           </div>
+
+                                                                           <div class="block-class">
+
+                                                                                等级:{$three[$vo['region']][$i]['class']}<br>
+
+                                                                                收益:{$three[$vo['region']][$i]['class']}
+
+                                                                           </div>
+
+                                                                           <div class="block-a">
+
+                                                                                <a class="btn btn-primary" href="tree.html?code={$three[$vo['region']][$i]['code']}" style="margin-left:80px">查看下级</a>
+
+                                                                           </div>
+
+                                                                           <div class="block-all">
+
+                                                                               <div class="all_left">
+
+                                                                                    {$three[$vo['region']][$i]['left_all_ach']}<br>{$three[$vo['region']][$i]['left_ach']}
+
+                                                                               </div>
+
+                                                                               <div class="all_z">
+
+                                                                                   总<br>余
+
+                                                                               </div>
+
+                                                                               <div class="all_right">
+
+                                                                                    {$three[$vo['region']][$i]['right_all_ach']}<br>{$three[$vo['region']][$i]['right_ach']}
+
+                                                                               </div>
+
+                                                                           </div>
+
+                                                                    {/eq}
+
+                                                             </div>
+
+                                                        </div>
+
+                                                </div>
+
+                                             {/for}
+
+                                        </div>
+
+                                        {/neq}
+
+                                        {/neq}
+
+                                  </div> 
+
+                            {/volist}
+
+                            {/neq}
+
+                        </div>
+
+                  </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div style="display: none" id="formAjax">
+  
+</div>
+
+
+
+
+
+
+<!-- End Panel Other -->
+
+<script src="__JS__/jquery.min.js?v=2.1.4"></script>
+
+<script src="__JS__/bootstrap.min.js?v=3.3.6"></script>
+
+<script type="text/javascript" src="__JS__/layui/layui.all.js"></script>
+
+<script type="text/javascript">
+  $(".register").click(function(){
+    var code = $(this).attr('code');
+    var region = $(this).attr('region');
+    layer.confirm('所有的商城购物及注册行为，必须建立在完全理解、自愿，不影响自己生活的情况下进行。自愿承担因此而产生的任何风险，与任何人无关。', {icon: 7, title:'温馨提示'}, function(index){
+      window.location.href="{:url('register')}?code="+code+"&region="+region;    
+      layer.close(index);
+    });
+  })
+</script>
+
+
+
+
+
+
+</script>
+
+</body>
+
+</html>
+

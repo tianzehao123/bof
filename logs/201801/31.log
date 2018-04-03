@@ -1,0 +1,209 @@
+---------------------------------------------------------------
+[ 2018-01-31T17:35:29+08:00 ] 121.42.251.110 115.57.135.105 POST /home/users/DoUpgrade
+[ info ] apibof.ewtouch.com/home/users/DoUpgrade [运行时间：0.097817s][吞吐率：10.22req/s] [内存消耗：2,995.74kb] [文件加载：64]
+[ info ] [ LANG ] /www/wwwroot/bof.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'users',
+    2 => 'DoUpgrade',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=722oak0c7tl3v7lnnq841gpmod',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://webbof.ewtouch.com/zh/business_up.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'origin' => 'http://webbof.ewtouch.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '7',
+  'connection' => 'keep-alive',
+  'host' => 'apibof.ewtouch.com',
+)
+[ info ] [ PARAM ] array (
+  'class' => '2',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+)
+[ info ] [ RUN ] app\home\controller\Users->DoUpgrade[ /www/wwwroot/bof.com/application/home/controller/Users.php ]
+[ info ] [ CACHE ] INIT file
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000495s ] mysql:dbname=bof_com;host=121.42.251.110;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_config` [ RunTime:0.001411s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'pu_straight' LIMIT 1 [ RunTime:0.000326s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'yin_straight' LIMIT 1 [ RunTime:0.000256s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'jin_straight' LIMIT 1 [ RunTime:0.000229s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'baijin_straight' LIMIT 1 [ RunTime:0.000219s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'heijin_straight' LIMIT 1 [ RunTime:0.000241s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'zuan_straight' LIMIT 1 [ RunTime:0.000237s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'lanzuan_straight' LIMIT 1 [ RunTime:0.000226s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_users` [ RunTime:0.001485s ]
+[ sql ] [ SQL ] SELECT `bof_all`,`class`,`balance`,`reg_score` FROM `sql_users` WHERE  `id` = 121 LIMIT 1 [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SELECT `class` FROM `sql_users` WHERE  `pid` = 121 [ RunTime:0.000217s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_user_upgrade` [ RunTime:0.001029s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_user_upgrade` WHERE  `uid` = 121 LIMIT 1 [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SELECT `class`,`reg_score` FROM `sql_users` WHERE  `id` = 121 LIMIT 1 [ RunTime:0.000240s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_disc` [ RunTime:0.001000s ]
+[ sql ] [ SQL ] SELECT `market_price` FROM `sql_disc` ORDER BY id desc LIMIT 1 [ RunTime:0.000204s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'current_price' LIMIT 1 [ RunTime:0.000231s ]
+[ sql ] [ SQL ] SELECT `status`,`class` FROM `sql_users` WHERE  `id` = 121 LIMIT 1 [ RunTime:0.000235s ]
+[ sql ] [ SQL ] SELECT `class`,`balance`,`id` FROM `sql_users` WHERE  `id` = 121  AND `status` = 1  AND `islock` = 1 LIMIT 1 [ RunTime:0.000238s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_bof_rank` [ RunTime:0.001007s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_bof_rank` WHERE  `uid` = 121  AND `status` = 1 LIMIT 1 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_bof_issue` [ RunTime:0.001012s ]
+[ sql ] [ SQL ] SELECT `bof_num`,`id` FROM `sql_bof_issue` WHERE  `status` = 1 ORDER BY `id`  desc LIMIT 1 [ RunTime:0.000227s ]
+[ sql ] [ SQL ] UPDATE `sql_bof_issue`  SET `bof_num`=460780  WHERE  `id` = 17 [ RunTime:0.004056s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `balance`=balance+500  WHERE  `id` = 121 [ RunTime:0.002481s ]
+[ sql ] [ SQL ] SELECT `balance` FROM `sql_users` WHERE  `id` = 121 LIMIT 1 [ RunTime:0.000262s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_account` [ RunTime:0.001132s ]
+[ sql ] [ SQL ] INSERT INTO `sql_account` (`uid` , `cur_score` , `score` , `remark` , `class` , `is_add` , `type` , `source` , `created_at`) VALUES (121 , 35750 , 500 , '系统分配bof' , 2 , 1 , 8 , 13 , '1517391329') [ RunTime:0.003030s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_bof_deal` [ RunTime:0.001122s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_bof_deal` WHERE  `order_sn` = '2018011517391329112' LIMIT 1 [ RunTime:0.000396s ]
+[ sql ] [ SQL ] INSERT INTO `sql_bof_deal` (`uid` , `order_sn` , `sell_price` , `sell_num` , `status` , `type` , `created_at`) VALUES (121 , '2018011517391329112' , 0.2 , 500 , 2 , 2 , '1517391329') [ RunTime:0.014758s ]
+[ sql ] [ SQL ] SELECT `region`,`nid` FROM `sql_users` WHERE  `id` = 121 LIMIT 1 [ RunTime:0.000233s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 120 LIMIT 1 [ RunTime:0.000229s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `right_all_ach`=3000,`right_ach`=3000  WHERE  `id` = 120 [ RunTime:0.009288s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 119 LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `right_all_ach`=3000,`right_ach`=3000  WHERE  `id` = 119 [ RunTime:0.002469s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 117 LIMIT 1 [ RunTime:0.000286s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `right_all_ach`=3000,`right_ach`=3000  WHERE  `id` = 117 [ RunTime:0.002379s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 0 LIMIT 1 [ RunTime:0.000237s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` = 121 LIMIT 1 [ RunTime:0.000461s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 120 LIMIT 1 [ RunTime:0.000215s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 120 LIMIT 1 [ RunTime:0.000206s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 119 LIMIT 1 [ RunTime:0.000181s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 119 LIMIT 1 [ RunTime:0.000190s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 117 LIMIT 1 [ RunTime:0.000193s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 117 LIMIT 1 [ RunTime:0.000176s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` IN (120,119,117) [ RunTime:0.000388s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_ach`=left_ach-900  WHERE  `id` = 117 [ RunTime:0.000256s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `right_ach`=right_ach-900  WHERE  `id` = 117 [ RunTime:0.000212s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneMatchPercent' LIMIT 1 [ RunTime:0.000251s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneBoomPercent' LIMIT 1 [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneToThreePercent' LIMIT 1 [ RunTime:0.000285s ]
+[ sql ] [ SQL ] SELECT SUM(score) AS tp_sum FROM `sql_account` WHERE  `uid` = 117  AND `source` = 2  AND `is_add` = 1  AND `type` = 3  AND `class` = 1  AND ( `created_at` > '1517328000' AND `created_at` < '1517414399' ) LIMIT 1 [ RunTime:0.000351s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneTopBoomScore' LIMIT 1 [ RunTime:0.000228s ]
+[ sql ] [ SQL ] SELECT `prize_score` FROM `sql_users` WHERE  `id` = 117 LIMIT 1 [ RunTime:0.000256s ]
+[ sql ] [ SQL ] INSERT INTO `sql_account` (`uid` , `score` , `cur_score` , `remark` , `class` , `is_add` , `type` , `source` , `from_uid` , `created_at`) VALUES (117 , 22.5 , 22.5 , '对碰奖结算' , 1 , 1 , 3 , 2 , 121 , '1517391329') [ RunTime:0.000232s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `prize_score`=prize_score+22.5  WHERE  `id` = 117 [ RunTime:0.000227s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 117 LIMIT 1 [ RunTime:0.000192s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 117 LIMIT 1 [ RunTime:0.000181s ]
+[ log ] <<<碰撞完成 新人id：121--手机号：15785556584 --碰撞金额：900---获奖人id：117--碰撞时间：2018-01-31 17:35:291517391329>>>
+---------------------------------------------------------------
+[ 2018-01-31T18:25:45+08:00 ] 121.42.251.110 115.57.135.105 POST /home/business/activation
+[ info ] apibof.ewtouch.com/home/business/activation [运行时间：0.079355s][吞吐率：12.60req/s] [内存消耗：2,779.72kb] [文件加载：63]
+[ info ] [ LANG ] /www/wwwroot/bof.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'business',
+    2 => 'activation',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=i267hnphltdup308p1ha3ejakp',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://webbof.ewtouch.com/zh/business_active.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36',
+  'origin' => 'http://webbof.ewtouch.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '66',
+  'connection' => 'keep-alive',
+  'host' => 'apibof.ewtouch.com',
+)
+[ info ] [ PARAM ] array (
+  'need_integral' => '100',
+  'integral' => '935049',
+  'phone' => '15369856985',
+  'id' => '122',
+  'class' => '1',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+)
+[ info ] [ RUN ] app\home\controller\Business->activation[ /www/wwwroot/bof.com/application/home/controller/Business.php ]
+[ info ] [ CACHE ] INIT file
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000526s ] mysql:dbname=bof_com;host=121.42.251.110;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_config` [ RunTime:0.001412s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'pu_straight' LIMIT 1 [ RunTime:0.000397s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'yin_straight' LIMIT 1 [ RunTime:0.000251s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'jin_straight' LIMIT 1 [ RunTime:0.000234s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'baijin_straight' LIMIT 1 [ RunTime:0.000308s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'heijin_straight' LIMIT 1 [ RunTime:0.000253s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'zuan_straight' LIMIT 1 [ RunTime:0.000258s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'lanzuan_straight' LIMIT 1 [ RunTime:0.000226s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_users` [ RunTime:0.001356s ]
+[ sql ] [ SQL ] SELECT `code` FROM `sql_users` WHERE  `id` = 121 LIMIT 1 [ RunTime:0.000254s ]
+[ sql ] [ SQL ] SELECT `status` FROM `sql_users` WHERE  `phone` = '15369856985' LIMIT 1 [ RunTime:0.000239s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `reg_score`=934949,`updated_at`='1517394344'  WHERE  `id` = 121 [ RunTime:0.004633s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `updated_at`='1517394344',`status`=1  WHERE  `id` = 122 [ RunTime:0.003597s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_account` [ RunTime:0.001150s ]
+[ sql ] [ SQL ] INSERT INTO `sql_account` (`from_uid` , `score` , `cur_score` , `remark` , `class` , `is_add` , `type` , `uid` , `source` , `created_at`) VALUES (122 , -100 , 934949 , '激活用户' , 1 , 2 , 1 , 121 , 11 , '1517394344') [ RunTime:0.003894s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_disc` [ RunTime:0.001047s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `sql_disc` LIMIT 1 [ RunTime:0.000204s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'current_price' LIMIT 1 [ RunTime:0.000256s ]
+[ sql ] [ SQL ] SELECT `class`,`balance`,`id` FROM `sql_users` WHERE  `id` = 122  AND `status` = 3  AND `islock` = 1 LIMIT 1 [ RunTime:0.000266s ]
+[ sql ] [ SQL ] SELECT `region`,`nid` FROM `sql_users` WHERE  `id` = 122 LIMIT 1 [ RunTime:0.000223s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 121 LIMIT 1 [ RunTime:0.000233s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `right_all_ach`=100,`right_ach`=100  WHERE  `id` = 121 [ RunTime:0.003392s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 120 LIMIT 1 [ RunTime:0.000269s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `right_all_ach`=72500,`right_ach`=72500  WHERE  `id` = 120 [ RunTime:0.002724s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 119 LIMIT 1 [ RunTime:0.000237s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `right_all_ach`=72500,`right_ach`=72500  WHERE  `id` = 119 [ RunTime:0.002684s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 117 LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `right_all_ach`=72500,`right_ach`=71600  WHERE  `id` = 117 [ RunTime:0.003428s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 0 LIMIT 1 [ RunTime:0.000317s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` = 122 LIMIT 1 [ RunTime:0.000488s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 121 LIMIT 1 [ RunTime:0.000219s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 121 LIMIT 1 [ RunTime:0.000193s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 120 LIMIT 1 [ RunTime:0.000188s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 120 LIMIT 1 [ RunTime:0.000187s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 119 LIMIT 1 [ RunTime:0.000183s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 119 LIMIT 1 [ RunTime:0.000189s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 117 LIMIT 1 [ RunTime:0.000182s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 117 LIMIT 1 [ RunTime:0.000185s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` IN (121,120,119,117) [ RunTime:0.000405s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_ach`=left_ach-100  WHERE  `id` = 121 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `right_ach`=right_ach-100  WHERE  `id` = 121 [ RunTime:0.000231s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneMatchPercent' LIMIT 1 [ RunTime:0.000286s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'sixBoomPercent' LIMIT 1 [ RunTime:0.000241s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneToThreePercent' LIMIT 1 [ RunTime:0.000224s ]
+[ sql ] [ SQL ] SELECT SUM(score) AS tp_sum FROM `sql_account` WHERE  `uid` = 121  AND `source` = 2  AND `is_add` = 1  AND `type` = 3  AND `class` = 1  AND ( `created_at` > '1517328000' AND `created_at` < '1517414399' ) LIMIT 1 [ RunTime:0.000433s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'sixTopBoomScore' LIMIT 1 [ RunTime:0.000273s ]
+[ sql ] [ SQL ] SELECT `prize_score` FROM `sql_users` WHERE  `id` = 121 LIMIT 1 [ RunTime:0.000224s ]
+[ sql ] [ SQL ] INSERT INTO `sql_account` (`uid` , `score` , `cur_score` , `remark` , `class` , `is_add` , `type` , `source` , `from_uid` , `created_at`) VALUES (121 , 5 , 4805 , '对碰奖结算' , 1 , 1 , 3 , 2 , 122 , '1517394345') [ RunTime:0.000260s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `prize_score`=prize_score+5  WHERE  `id` = 121 [ RunTime:0.000246s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 121 LIMIT 1 [ RunTime:0.000197s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 121 LIMIT 1 [ RunTime:0.000197s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 117 LIMIT 1 [ RunTime:0.000194s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 117 LIMIT 1 [ RunTime:0.000229s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` = 117 LIMIT 1 [ RunTime:0.000362s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneContributionPercent' LIMIT 1 [ RunTime:0.000283s ]
+[ sql ] [ SQL ] SELECT `prize_score` FROM `sql_users` WHERE  `id` = 117 LIMIT 1 [ RunTime:0.000301s ]
+[ sql ] [ SQL ] INSERT INTO `sql_account` (`uid` , `score` , `cur_score` , `remark` , `class` , `is_add` , `type` , `source` , `from_uid` , `created_at`) VALUES (117 , 0.1 , 5287.6 , '贡献奖结算' , 1 , 1 , 3 , 2 , 121 , '1517394345') [ RunTime:0.000265s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `prize_score`=prize_score+0.1  WHERE  `id` = 117 [ RunTime:0.000301s ]
+[ log ] <<<碰撞完成 新人id：122--手机号：15369856985 --碰撞金额：100---获奖人id：121--碰撞时间：2018-01-31 18:25:451517394345>>>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订单管理</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__CSS__/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="__CSS__/animate.min.css" rel="stylesheet">
+    <link href="__CSS__/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="__CSS__/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link rel="stylesheet" href="__JS__/plugins/layui/css/layui.css">
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>订单列表</h5>
+        </div>
+        <div class="ibox-content">
+            <!--搜索框开始-->
+            <form id='commentForm' role="form" method="post" class="form-inline">
+                <div class="content clearfix m-b">
+                    <input type="hidden" id="excel" value="">
+                    <div class="form-group">
+                        <label>用户名：</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label>订单号：</label>
+                        <input type="text" class="form-control" id="order_sn" name="order_sn">
+                    </div>
+                    <div class="form-group">
+                        <label>收货人手机号：</label>
+                        <input type="text" class="form-control" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label>购买人手机号：</label>
+                        <input type="text" class="form-control" id="gm_phone" name="gm_phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label>订单状态：</label>
+                        <select name="status" id="status" class="form-control">
+                            <option value="">请选择</option>
+                            {foreach $status as $k=>$v}
+                            <option value="{$k}">{$v}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-noraml">下单时间段</label>
+                        <div class="input-daterange input-group">
+                            <input type="date" class="form-control" id="start">
+                            <span class="input-group-addon">到</span>
+                            <input type="date" class="form-control" id="end">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="button" style="margin-top:5px" id="search"><strong>搜 索</strong>
+                        </button>
+                    </div>
+                    <!-- <div class="form-group">
+                        <button class="btn btn-primary" type="button" style="margin-top:5px" id="to_excel"><strong>导出到Excel</strong>
+                        </button>
+                        <a href="/uploads/file.xlsx" download="订单列表.xlsx" id="download_excel" style="display:none;"><p>下载excel</p></a>
+                    </div> -->
+                </div>
+            </form>
+            <!--搜索框结束-->
+            <!--<div class="form-group clearfix col-sm-1">-->
+                <!--<a href="./userAdd"><button class="btn btn-outline btn-primary" type="button">添加用户</button></a>-->
+            <!--</div>-->
+            <div class="hr-line-dashed"></div>
+
+            <div class="example-wrap">
+                <div class="example">
+                    <table id="cusTable" data-height="700">
+                        <thead>
+                        <th data-field="order_sn">编号(点击查看详情)</th>
+                        <th data-field="user_name">收货人/购买人</th>
+                        <th data-field="user_phone">收货人手机号</th>
+                        <th data-field="gm_phone">购买人手机号</th>
+                        <th data-field="payment">支付类型</th>
+                        <th data-field="price">订单金额</th>
+                        <!--<th data-field="score">使用消费基金</th>-->
+                        <th data-field="status">订单状态</th>
+                        <th data-field="created_at">下单时间</th>
+                        <th data-field="user_address">收货地址</th>
+                        <th data-field="ship">发货单号</th>
+                        <!-- <th data-field="is_new">复销</th>
+                        <th data-field="message">审核</th> -->
+                        <th data-field="operate">操作</th>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <!-- End Example Pagination -->
+        </div>
+    </div>
+</div>
+<table class="table table-hover order_detail" style="display:none;">
+    <thead>
+    <tr>
+        <th>商品名</th>
+        <th>略缩图</th>
+        <th>商品单价</th>
+        <th>商品分类</th>
+        <!--<th>促销价格</th>-->
+        <!--<th>是否促销</th>-->
+        <th>购买数量</th>
+    </tr>
+    </thead>
+    <tbody id="order_content">
+    <!--插入的商品信息-->
+    </tbody>
+</table>
+<!--补差价-->
+<table class="table table-hover tail_money" style="display:none;">
+    <thead>
+    <tr>
+        <th>金额</th>
+        <th>支付类型</th>
+        <th>支付凭证后六位</th>
+        <th>申请时间</th>
+    </tr>
+    </thead>
+    <tbody id="tail_money_content">
+    <!--插入的商品信息-->
+    </tbody>
+</table>
+
+<div id="order_id_name" style="display:none" class="ibox-content">   
+    <form id='commentForm' role="form" method="post" class="form-inline">
+        <div class="content clearfix m-b">
+            <input type="hidden" id="excel" value="">
+            <div class="form-group" style="margin-top:10px">
+                <label>快递单号:</label>
+                <input type="text" class="form-control" id="ship" name="name">
+            </div>
+<!--             <div class="form-group" style="margin-top:10px">
+                <label>快递费：</label>
+                <input type="text" class="form-control" id="freight" name="order_sn">
+            </div> -->
+            <div class="form-group" style="margin-top:10px">
+                <label>快递公司：</label>
+                <input type="text" class="form-control" id="logistics_name" name="logistics_name">
+            </div>
+            <div class="form-group" style="display:block;">
+                <button class="btn btn-primary" type="button" style="margin-top:5px" id="search" onclick="order_freight()"><strong>提交</strong>
+                </button>
+            </div>
+        </div>
+        <input type="hidden" id="order_id" value="">
+    </form>
+</div>
+<!--补差价结束-->
+<!-- End Panel Other -->
+<script src="__JS__/jquery.min.js?v=2.1.4"></script>
+<script src="__JS__/bootstrap.min.js?v=3.3.6"></script>
+<script src="__JS__/content.min.js?v=1.0.0"></script>
+<script src="__JS__/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="__JS__/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="__JS__/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="__JS__/plugins/suggest/bootstrap-suggest.min.js"></script>
+<script src="__JS__/plugins/layer/laydate/laydate.js"></script>
+<script src="__JS__/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="__JS__/plugins/layer/layer.min.js"></script>
+<script src="__JS__/plugins/layui/layui.js"></script>
+<script type="text/javascript">
+    function initTable() {
+        //先销毁表格
+        $('#cusTable').bootstrapTable('destroy');
+        //初始化表格,动态从服务器加载数据
+        $("#cusTable").bootstrapTable({
+            method: "get",  //使用get请求到服务器获取数据
+            url: "./index", //获取数据的地址
+            striped: true,  //表格显示条纹
+            pagination: true, //启动分页
+            pageSize: 10,  //每页显示的记录数
+            pageNumber:1, //当前第几页
+            pageList: [5, 10, 15, 20, 25],  //记录数可选列表
+            sidePagination: "server", //表示服务端请求
+            //设置为undefined可以获取pageNumber，pageSize，searchText，sortName，sortOrder
+            //设置为limit可以获取limit, offset, search, sort, order
+            queryParamsType : "undefined",
+            queryParams: function queryParams(params) {   //设置查询参数
+                var param = {
+                    pageNumber: params.pageNumber,
+                    pageSize: params.pageSize,
+                    name:$('#name').val(),
+                    order_sn:$('#order_sn').val(),
+                    phone:$('#phone').val(),
+                    gm_phone:$('#gm_phone').val(),
+                    payment:$('#payment').val(),
+                    status:$('#status').val(),
+                    start:$('#start').val(),
+                    end:$('#end').val(),
+                    excel:$('#excel').val(),
+                };
+                return param;
+            },
+            onLoadSuccess: function(){  //加载成功时执行
+                layer.msg("加载成功", {time : 1000},function(){
+                    if($('#excel').val() == 'to_excel'){
+                        $('#download_excel>p').click();
+                        $('#excel').val('');
+                        initTable();
+                    }
+                });
+            },
+            onLoadError: function(){  //加载失败时执行
+                layer.msg("加载数据失败");
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        //调用函数，初始化表格
+        initTable();
+
+        //当点击查询按钮的时候执行
+        $("#search").bind("click", initTable);
+        //导出excel表格事件
+        $('#to_excel').bind('click',function(){
+           $('#excel').val('to_excel');
+           initTable();
+        });
+    });
+    layui.use('layer',function(){
+       layer = layui.layer;
+    });
+    function orderEdit(id){
+        layer.open({
+            type: 1,
+            shade: false,
+            title: '发货信息',
+            area:['260px','400px'],
+            content: $('#order_id_name'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+        });
+        $("#order_id").val(id);
+
+    }
+
+
+    function order_freight(){
+        var logistics_name = $('#logistics_name').val();
+        var freight = $('#freight').val();
+        var ship = $('#ship').val();
+        var id = $("#order_id").val();
+        if(ship==''){
+            alert('快递单号不能为空');
+            return false;
+        }
+
+        if(logistics_name==''){
+            alert('快递公司名称不能为空');
+            return  false;
+        }
+
+        // if(freight==''){
+        //     alert('快递费不能为空');
+        //     return false;
+        // }
+
+       $.ajax({
+            url:'orderEdit.html',
+            type:'post',
+            data:{id:id,'logistics_name':logistics_name,'ship':ship},
+            success:function(res){
+                layer.alert(res.msg);
+                layer.closeAll();
+                window.location.href= 'index.html';
+            }
+        })        
+    }
+
+
+    //订单详情
+    function getOrder(id){
+        $.getJSON('./getOneOrder', {'id':id}, function(res){
+//            console.log(res);
+            var detail = res.data.order.details;
+            var content;
+            $('#order_content').html('');
+            for(var i in detail){
+                content = '<tr><td>'+detail[i].gname+'</td><td><img src="'+detail[i].gimg+'" style="width:60px;"/></td><td>'+detail[i].gprice+'</td><td>'+detail[i].goods.goods_type+'</td><td>'+detail[i].g_num+'</td></tr>';
+                $('#order_content').append(content);
+            }
+            layer.open({
+                type: 1,
+                shade: false,
+                title: '订单号为:'+res.data.order.order_sn+'的订单详情',
+                area:['600px','400px'],
+                content: $('.order_detail'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+            });
+        });
+    }
+
+    //尾款信息
+    function tail_money(id){
+        $.ajax({
+            url:'/admin/order/tail_money',
+            type:'get',
+            data:{
+                id:id
+            },
+            success:function(res){
+                var tail_money = res.data.order.tailMoney;
+                var content;
+                $('#tail_money_content').html('');
+                for(var i=tail_money.length-1;i>=0;i--){
+                    content = '<tr><td>'+tail_money[i].money+'</td><td>'+tail_money[i].type+'</td><td>'+tail_money[i].certificate+'</td><td>'+timeToString(tail_money[i].created_at)+'</td></tr>';
+                    $('#tail_money_content').append(content);
+                }
+                layer.open({
+                    type: 1,
+                    shade: false,
+                    title: '总金额:'+res.data.order.price,
+                    area:['600px','400px'],
+                    content: $('.tail_money'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+                });
+            }
+        })
+    }
+
+    function tail_money_edit(id){
+        layer.confirm('审核结果', {
+            btn: ['审核通过', '拒绝'] //可以无限个按钮
+        }, function(index){
+            $.getJSON('./tail_money_edit', {'id':id,'status':4}, function(res){
+                layer.msg('审核通过',function(){
+                    layer.close(index);
+                    initTable();
+                });
+            });
+        }, function(index){
+            $.getJSON('./tail_money_edit', {'id':id,'status':3}, function(res){
+                layer.msg('拒绝成功',function(){
+                    layer.close(index);
+                    initTable();
+                });
+            });
+        });
+    }
+
+    function timeToString(time){
+        time = time * 1000;
+        var date = new Date(time);
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        D = date.getDate() + ' ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = date.getSeconds();
+        return Y+M+D+h+m+s;
+    }
+</script>
+</body>
+</html>

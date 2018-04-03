@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>积分转账</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__CSS__/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="__CSS__/animate.min.css" rel="stylesheet">
+    <link href="__CSS__/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="__CSS__/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link rel="stylesheet" href="__JS__/plugins/layui/css/layui.css">
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>积分转账</h5>
+        </div>
+        <div class="ibox-content">
+            <!--搜索框开始-->
+            <form id='commentForm' role="form" method="post" class="form-inline">
+                <div class="content clearfix m-b">
+                    <div class="form-group">
+                        <label>转出账号：</label>
+                        <input type="text" class="form-control" id="outcode" name="outcode">
+                    </div>&nbsp;&nbsp;
+                    <div class="form-group">
+                        <label>转入账号：</label>
+                        <input type="text" class="form-control" id="intocode" name="intocode">
+                    </div>&nbsp;&nbsp;
+                    <div class="form-group">
+                        <select name="type" class="form-control" id="type">
+                            <option value="">所有账户</option>
+                            <option value="1">注册积分转账</option>
+                            <option value="4">消费积分转账</option>
+                        </select>
+                    </div>&nbsp;&nbsp;
+                    <div class="form-group">
+                        <label class="font-noraml">转账日期:</label>
+                        <div class="input-daterange input-group">
+                            <input type="date" class="form-control" id="start">
+                            <span class="input-group-addon">到</span>
+                            <input type="date" class="form-control" id="end">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="button" style="margin-top:5px" id="search"><strong>搜 索</strong>
+                        </button>
+                    </div>
+                    <div class="form-group">
+                    <button class="btn btn-info" type="button" style="margin-top:5px" id="execl"><strong>导出</strong>
+                    </button>
+                </div>
+                </div>
+            </form>
+            <!--搜索框结束-->
+            <!--<div class="form-group clearfix col-sm-1">-->
+            <!--<a href="./userAdd"><button class="btn btn-outline btn-primary" type="button">添加用户</button></a>-->
+            <!--</div>-->
+            <div class="hr-line-dashed"></div>
+            <div class="example-wrap">
+                <div class="example">
+                    <table id="cusTable" data-height="700">
+                        <thead>
+                        <th data-field="from_uid">转出账号</th>
+                        <th data-field="ftruename">姓名</th>
+                        <th data-field="uid">转入账号</th>
+                        <th data-field="truename">姓名</th>
+                        <th data-field="type">账户</th>
+                        <th data-field="score">转账金额</th>
+                        <th data-field="created_at">转账时间</th>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <!-- End Example Pagination -->
+        </div>
+    </div>
+</div>
+<div class="ibox-content" id="ibox-content" style="display:none">
+    <form class="form-horizontal m-t">
+        <div class="layui-form-item">
+            <label class="layui-form-label">账户余额</label>
+            <div class="layui-input-block">
+                <input type="text"  lay-verify="title" autocomplete="off" disabled="true" id="reg_score" value="0" class="layui-input">
+            </div>
+        </div>
+        <input type="hidden" id="userid" name="id" value="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">充值金额</label>
+            <div class="layui-input-block">
+                <input type="text" name="Amount" lay-verify="title" autocomplete="off" placeholder="请输入金额" id="Amount" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button  class="btn btn-primary" type="button"  id="AmountBtn">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- 用户详情 -->
+<div class="ibox-content profile-content" id="user_detail" style="display:none;font-size:16px;">
+    <!--     <table>
+            <tr>
+                <td>用户手机号：</td>
+                <td class="detail_phone"></td>
+            </tr>
+            <tr>
+                <td>昵称：</td>
+                <td class="detail_nickname"></td>
+            </tr>
+            <tr>
+                <td>真实姓名：</td>
+                <td class="detail_truename"></td>
+            </tr>
+            <tr>
+                <td>性别：</td>
+                <td class="detail_sex"></td>
+            </tr>
+            <tr>
+                <td>微信二维码：</td>
+                <td><img class="detail_qrcode" style="max-height:75px;" src="__IMG__/a1.jpg"></td>
+            </tr>
+            <tr>
+                <td>头像：</td>
+                <td><img class="detail_headimg" style="max-height:75px;" src="__IMG__/a1.jpg"></td>
+            </tr>
+            <tr>
+                <td>消费基金：</td>
+                <td class="detail_score"></td>
+            </tr>
+            <tr>
+                <td>余额：</td>
+                <td class="detail_balance"></td>
+            </tr>
+            <tr>
+                <td>注册时间：</td>
+                <td class="detail_created_at"></td>
+            </tr>
+            <tr>
+                <td>最近登录时间：</td>
+                <td class="detail_updated_at"></td>
+            </tr>
+        </table> -->
+</div>
+<!-- 用户详情结束 -->
+<!-- 资金明细开始 -->
+<table class='table table-bordered' style="display:none;" id="user_account">
+    <thead>
+    <th>id</th>
+    <th>类型</th>
+    <th>支出/收入</th>
+    <th>交易金额</th>
+    <th>当前余额</th>
+    <th>备注</th>
+    <th>来源/去向</th>
+    <th>日期</th>
+    </thead>
+    <tbody id="account_content">
+
+    </tbody>
+</table>
+<!-- 资金明细结束 -->
+<!-- End Panel Other -->
+<script src="__JS__/jquery.min.js?v=2.1.4"></script>
+<script src="__JS__/bootstrap.min.js?v=3.3.6"></script>
+<script src="__JS__/content.min.js?v=1.0.0"></script>
+<script src="__JS__/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="__JS__/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="__JS__/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="__JS__/plugins/suggest/bootstrap-suggest.min.js"></script>
+<script src="__JS__/plugins/layer/laydate/laydate.js"></script>
+<script src="__JS__/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="__JS__/plugins/layer/layer.min.js"></script>
+<script src="__JS__/layui/layui.all.js"></script>
+<script src="__JS__/layui/layui.js"></script>
+<script type="text/javascript">
+    $("#cusTable th").addClass('text-center');
+    function initTable() {
+        //先销毁表格
+        $('#cusTable').bootstrapTable('destroy');
+        //初始化表格,动态从服务器加载数据
+        $("#cusTable").bootstrapTable({
+            method: "get",  //使用get请求到服务器获取数据
+            url: "./integratransfer", //获取数据的地址
+            striped: true,  //表格显示条纹
+            pagination: true, //启动分页
+            pageSize: 10,  //每页显示的记录数
+            pageNumber:1, //当前第几页
+            pageList: [5, 10, 15, 20, 25],  //记录数可选列表
+            sidePagination: "server", //表示服务端请求
+            //设置为undefined可以获取pageNumber，pageSize，searchText，sortName，sortOrder
+            //设置为limit可以获取limit, offset, search, sort, order
+            queryParamsType : "undefined",
+            queryParams: function queryParams(params) {   //设置查询参数
+                var param = {
+                    pageNumber: params.pageNumber,
+                    pageSize: params.pageSize,
+                    outcode:$('#outcode').val(),
+                    intocode:$('#intocode').val(),
+                    start:$('#start').val(),
+                    end:$('#end').val(),
+                    type:$('#type').val(),
+                };
+                return param;
+            },
+            onLoadSuccess: function(){  //加载成功时执行
+                layer.msg("加载成功", {time : 1000});
+            },
+            onLoadError: function(){  //加载失败时执行
+                layer.msg("加载数据失败");
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        //调用函数，初始化表格
+        initTable();
+        //当点击查询按钮的时候执行
+        $("#search").bind("click", initTable);
+    });
+
+    
+</script>
+</body>
+</html>
+

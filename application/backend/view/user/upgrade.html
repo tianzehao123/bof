@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用戶管理</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="__CSS__/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="__CSS__/animate.min.css" rel="stylesheet">
+    <link href="__CSS__/style.min.css?v=4.1.0" rel="stylesheet">
+    <link href="__CSS__/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link rel="stylesheet" href="__JS__/plugins/layui/css/layui.css">
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>用戶列表</h5>
+        </div>
+        <div class="ibox-content">
+            <!--搜索框开始-->
+            <form id='commentForm' role="form" method="post" class="form-inline">
+                <div class="content clearfix m-b">
+                    <div class="form-group">
+                        <label>用戶昵称：</label>
+                        <input type="text" class="form-control" id="nickname" name="nickname">
+                    </div>
+                    <div class="form-group">
+                        <label>用户等级：</label>
+                        <select name="user_class" class="form-control" id="user_class">
+                            <option value="">请选择</option>
+                            {volist name="class" id="vo" key="k"}
+                                {egt name="$k" value="3"}
+                                    <option value="{$k-1}">{$vo}</option>
+                                {/egt}
+                            {/volist}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-noraml">注册时间段</label>
+                        <div class="input-daterange input-group">
+                            <input type="date" class="form-control" id="start">
+                            <span class="input-group-addon">到</span>
+                            <input type="date" class="form-control" id="end">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="button" style="margin-top:5px" id="search"><strong>搜 索</strong>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!--搜索框结束-->
+            <!--<div class="form-group clearfix col-sm-1">-->
+                <!--<a href="./userAdd"><button class="btn btn-outline btn-primary" type="button">添加用户</button></a>-->
+            <!--</div>-->
+            <div class="hr-line-dashed"></div>
+
+            <div class="example-wrap">
+                <div class="example">
+                    <table id="cusTable" data-height="700">
+                        <thead>
+                        <th data-field="id">id</th>
+                        <th data-field="code">会员编号</th>
+                        <th data-field="truename">真实姓名</th>
+                        <th data-field="type">晋升类型</th>
+                        <th data-field="created_at">申请日期</th>
+                        <th data-field="class">晋升前级别</th>
+                        <th data-field="class_at">晋升后级别</th>
+                        <th data-field="Amount">金额</th>
+                        <th data-field="created_at">晋升日期</th>
+                        <th data-field="state">状态</th>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <!-- End Example Pagination -->
+        </div>
+    </div>
+</div>
+
+
+<!-- 资金明细结束 -->
+<!-- End Panel Other -->
+<script src="__JS__/jquery.min.js?v=2.1.4"></script>
+<script src="__JS__/bootstrap.min.js?v=3.3.6"></script>
+<script src="__JS__/content.min.js?v=1.0.0"></script>
+<script src="__JS__/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="__JS__/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="__JS__/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="__JS__/plugins/suggest/bootstrap-suggest.min.js"></script>
+<script src="__JS__/plugins/layer/laydate/laydate.js"></script>
+<script src="__JS__/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="__JS__/plugins/layer/layer.min.js"></script>
+<script src="__JS__/layui/layui.all.js"></script>
+<script src="__JS__/layui/layui.js"></script>
+<script type="text/javascript">
+    function initTable() {
+        //先销毁表格
+        $('#cusTable').bootstrapTable('destroy');
+        //初始化表格,动态从服务器加载数据
+        $("#cusTable").bootstrapTable({
+            method: "get",  //使用get请求到服务器获取数据
+            url: "./upgrade", //获取数据的地址
+            striped: true,  //表格显示条纹
+            pagination: true, //启动分页
+            pageSize: 10,  //每页显示的记录数
+            pageNumber:1, //当前第几页
+            pageList: [5, 10, 15, 20, 25],  //记录数可选列表
+            sidePagination: "server", //表示服务端请求
+            //设置为undefined可以获取pageNumber，pageSize，searchText，sortName，sortOrder
+            //设置为limit可以获取limit, offset, search, sort, order
+            queryParamsType : "undefined",
+            queryParams: function queryParams(params) {   //设置查询参数
+                var param = {
+                    pageNumber: params.pageNumber,
+                    pageSize: params.pageSize,
+                    phone:$('#phone').val(),
+                    class:$('#user_class').val(),
+                    start:$('#start').val(),
+                    end:$('#end').val(),
+                    code:$('#nickname').val(),
+                };
+                return param;
+            },
+            onLoadSuccess: function(){  //加载成功时执行
+                layer.msg("加载成功", {time : 1000});
+            },
+            onLoadError: function(){  //加载失败时执行
+                layer.msg("加载数据失败");
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        //调用函数，初始化表格
+        initTable();
+
+        //当点击查询按钮的时候执行
+        $("#search").bind("click", initTable);
+    });
+
+    function userEdit(id,money,name){
+
+        w = layer.open({
+            type: 1,
+            shade: false,
+            title: '调节'+name+'的注册币余额', //不显示标题
+            area:['400px','400px'],
+            content: $('#ibox-content'), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+            success : function(){
+                $('#reg_score').val(money);
+                $('#userid').val(id);
+            }
+        });
+    }
+
+
+
+   $('#AmountBtn').on('click',function(){
+        var id = $('#userid').val();
+        var Amount = $('#Amount').val();
+        layer.confirm('你确定要执行此操作吗?', {icon: 3, title:'注册币充值'}, function(){  
+            $.getJSON("./userEdit", {'id':id,'Amount':Amount}, function(res){
+                  console.log(res);
+                    layer.msg(res,{
+                        time : '1000'
+                    },function(){
+                         $('#userid').val(null);
+                         $('#Amount').val(null);
+                         $('#reg_score').text(null);
+                         $("#ibox-content").css("display","none");
+                        layer.closeAll();
+                        initTable();
+
+                   });
+            });
+            
+        });
+    });
+
+
+
+    function lock(id){
+        layer.confirm('你确定要执行此操作吗?', {icon: 3, title:'锁定/解锁账号'}, function(index){
+          
+            $.getJSON("./lock", {'id':id}, function(res){
+                     layer.msg(res);
+                     layer.close(index);
+                     initTable();
+            });
+        });
+    }
+
+
+    //资金明细
+    function user_account(id){
+        $.getJSON("{:url('user/account')}", {'id' : id}, function(res){
+             console.log(res);
+            if(res.status==1){
+                    var data = res.data;
+                    var account_content = $('#account_content');
+                    var content = '';
+                    account_content.text('');
+                    for(var i = 0;i < data.length;i++){
+                        content = '';
+                        content += '<tr>';
+                        content += '<td>'+data[i].id+'</td>';
+                        content += '<td>'+data[i].type+'</td>';
+                        content += '<td>'+data[i].is_add+'</td>';
+                        content += '<td>'+data[i].score+'</td>';
+                        content += '<td>'+data[i].cur_score+'</td>';
+                        content += '<td>'+data[i].remark+'</td>';
+                        content += '<td>'+data[i].from_uid;  
+                         content += '<td>'+data[i].created_at+'</td>';+'</td>';
+
+                        content += '</tr>';
+                        account_content.append(content);
+                    }
+                    //捕获页
+                    layer.open({
+                        type: 1,
+                        shade: false,
+                        area: ['1000px', '500px'], //宽高
+                        title: '用户资金明细', //不显示标题
+                        content: $('#user_account'),
+                    });
+
+            }else{
+                 layer.alert(res.message);
+            }
+        });
+    }
+
+    function userDel(id){
+        layer.confirm('确认删除此用戶?', {icon: 3, title:'提示'}, function(index){
+            //do something
+            $.getJSON('./userDel', {'id' : id}, function(res){
+                if(res.code == 1){
+                    layer.alert('删除成功');
+                    initTable();
+                }else{
+                    layer.alert('删除失败');
+                }
+            });
+
+            layer.close(index);
+        })
+
+    }
+
+    function timeToString(time){
+        var date = new Date(time);
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+        D = date.getDate() + ' ';
+        h = date.getHours() + ':';
+        m = date.getMinutes() + ':';
+        s = date.getSeconds();
+        return Y+M+D+h+m+s;
+    }
+
+
+    //激活账号
+    function activation(id)
+    {
+        layer.confirm('确认激活此用户?', {icon: 3, title:'激活用户'}, function(index){
+            //do something
+            $.getJSON('./activation', {'id' : id}, function(res){
+                    layer.alert(res);
+                    initTable();
+            });
+            layer.close(index);
+        })
+    }
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,588 @@
+---------------------------------------------------------------
+[ 2018-03-02T08:58:58+08:00 ] 121.42.251.110 115.57.129.228 POST /home/register/dofourstep
+[ info ] apibof.ewtouch.com/home/register/dofourstep [运行时间：0.205115s][吞吐率：4.88req/s] [内存消耗：3,030.30kb] [文件加载：62]
+[ info ] [ LANG ] /www/wwwroot/bof.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'register',
+    2 => 'dofourstep',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=ajijst1gdqb5kub6rdlq1m8b1o',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://webbof.ewtouch.com/zh/register4.html?id=3',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'origin' => 'http://webbof.ewtouch.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '93',
+  'connection' => 'keep-alive',
+  'host' => 'apibof.ewtouch.com',
+)
+[ info ] [ PARAM ] array (
+  'id' => '3',
+  'videourl' => 'http://webbof.ewtouch.com/headimg/2018030208585618200000041334571.mp4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Register->dofourstep[ /www/wwwroot/bof.com/application/home/controller/Register.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+)
+[ info ] [ CACHE ] INIT file
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000483s ] mysql:dbname=bof_com;host=121.42.251.110;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_config` [ RunTime:0.001511s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'pu_straight' LIMIT 1 [ RunTime:0.000329s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'pu_straight' LIMIT 1 [ RunTime:0.000255s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'yin_straight' LIMIT 1 [ RunTime:0.000232s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'jin_straight' LIMIT 1 [ RunTime:0.000220s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'baijin_straight' LIMIT 1 [ RunTime:0.000224s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'heijin_straight' LIMIT 1 [ RunTime:0.000234s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'zuan_straight' LIMIT 1 [ RunTime:0.000234s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'lanzuan_straight' LIMIT 1 [ RunTime:0.000229s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_users` [ RunTime:0.001024s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 209 LIMIT 1 [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SELECT `id`,`region` FROM `sql_users` WHERE  `nid` = 209  AND `region` = 1 LIMIT 1 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SELECT `all_nid` FROM `sql_users` WHERE  `id` = 209 LIMIT 1 [ RunTime:0.000207s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `password`='e10adc3949ba59abbe56e057f20f883e',`phone`='15900000011',`code`='T014',`two_password`='e10adc3949ba59abbe56e057f20f883e',`cascade`=1,`bd_id`='xxxx',`region`=1,`class_reg`=1,`class`=1,`pid`=209,`all_pid`='0,140,163,176,182,194,195,197,200,202,203,204,205,206,207,208,209,',`all_nid`='0,140,163,176,177,182,183,188,189,190,191,192,193,194,195,197,200,202,203,204,205,206,207,208,209,',`nid`=209,`pattern`=0,`nids`=209,`truename`='de',`identity`='12345678945612',`bank_name`='d',`bank_account`='113456789456',`bank_user`='d',`bank_branch`='',`zhifubao`='',`weixin`='',`videourl`='http://webbof.ewtouch.com/headimg/2018030208585618200000041334571.mp4',`created_at`='1519952338',`step`=4,`nickname`='BOF_T7Kvec9'  WHERE  `id` = 210 [ RunTime:0.008742s ]
+[ sql ] [ SQL ] SELECT `reg_score` FROM `sql_users` WHERE  `id` = 210 LIMIT 1 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `reg_score`=0,`updated_at`='1519952338'  WHERE  `id` = 210 [ RunTime:0.003102s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_account` [ RunTime:0.000777s ]
+[ sql ] [ SQL ] INSERT INTO `sql_account` (`score` , `cur_score` , `remark` , `class` , `is_add` , `type` , `uid` , `source` , `created_at`) VALUES (-100 , 0 , '激活用户' , 1 , 2 , 1 , 210 , 11 , '1519952338') [ RunTime:0.003568s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_disc` [ RunTime:0.000666s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `sql_disc` LIMIT 1 [ RunTime:0.000233s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_disc` ORDER BY `id`  desc LIMIT 1 [ RunTime:0.000212s ]
+[ sql ] [ SQL ] SELECT `class`,`balance`,`id` FROM `sql_users` WHERE  `id` = 210  AND `islock` = 1 LIMIT 1 [ RunTime:0.000258s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_bof_rank` [ RunTime:0.000651s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_bof_rank` WHERE  `uid` = 210  AND `status` = 1 LIMIT 1 [ RunTime:0.000260s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_bof_issue` [ RunTime:0.000624s ]
+[ sql ] [ SQL ] SELECT `bof_num`,`id` FROM `sql_bof_issue` WHERE  `status` = 1 ORDER BY `id`  desc LIMIT 1 [ RunTime:0.000240s ]
+[ sql ] [ SQL ] UPDATE `sql_bof_issue`  SET `bof_num`=9900627.237561  WHERE  `id` = 23 [ RunTime:0.002892s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `balance`=balance+243.90243902439  WHERE  `id` = 210 [ RunTime:0.004789s ]
+[ sql ] [ SQL ] SELECT `balance` FROM `sql_users` WHERE  `id` = 210 LIMIT 1 [ RunTime:0.000217s ]
+[ sql ] [ SQL ] INSERT INTO `sql_account` (`uid` , `cur_score` , `score` , `remark` , `class` , `is_add` , `type` , `source` , `created_at`) VALUES (210 , 243.9 , 243.90243902439 , '系统分配bof' , 2 , 1 , 8 , 13 , '1519952338') [ RunTime:0.004059s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_bof_deal` [ RunTime:0.001309s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_bof_deal` WHERE  `order_sn` = '2018031519952338675' LIMIT 1 [ RunTime:0.000889s ]
+[ sql ] [ SQL ] INSERT INTO `sql_bof_deal` (`uid` , `order_sn` , `sell_price` , `sell_num` , `status` , `type` , `created_at`) VALUES (210 , '2018031519952338675' , 0.205 , 243.90243902439 , 2 , 2 , '1519952338') [ RunTime:0.004614s ]
+[ sql ] [ SQL ] SELECT `region`,`nid` FROM `sql_users` WHERE  `id` = 210 LIMIT 1 [ RunTime:0.000254s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 209 LIMIT 1 [ RunTime:0.000221s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=100,`left_ach`=100  WHERE  `id` = 209 [ RunTime:0.002513s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 208 LIMIT 1 [ RunTime:0.000251s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=200,`left_ach`=200  WHERE  `id` = 208 [ RunTime:0.003033s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 207 LIMIT 1 [ RunTime:0.000238s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=300,`left_ach`=300  WHERE  `id` = 207 [ RunTime:0.002846s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 206 LIMIT 1 [ RunTime:0.000237s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=400,`left_ach`=400  WHERE  `id` = 206 [ RunTime:0.002753s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 205 LIMIT 1 [ RunTime:0.000238s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=500,`left_ach`=500  WHERE  `id` = 205 [ RunTime:0.002649s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 204 LIMIT 1 [ RunTime:0.000248s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=600,`left_ach`=600  WHERE  `id` = 204 [ RunTime:0.002653s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 203 LIMIT 1 [ RunTime:0.000251s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=1600,`left_ach`=1600  WHERE  `id` = 203 [ RunTime:0.002531s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 202 LIMIT 1 [ RunTime:0.000238s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=1700,`left_ach`=1700  WHERE  `id` = 202 [ RunTime:0.003609s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 200 LIMIT 1 [ RunTime:0.000249s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=1800,`left_ach`=1800  WHERE  `id` = 200 [ RunTime:0.002601s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 197 LIMIT 1 [ RunTime:0.000235s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=1900,`left_ach`=1900  WHERE  `id` = 197 [ RunTime:0.003101s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 195 LIMIT 1 [ RunTime:0.000279s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=2200,`left_ach`=2200  WHERE  `id` = 195 [ RunTime:0.002808s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000247s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=12200,`left_ach`=100  WHERE  `id` = 194 [ RunTime:0.002936s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 193 LIMIT 1 [ RunTime:0.000290s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=28100,`left_ach`=28100  WHERE  `id` = 193 [ RunTime:0.004171s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 192 LIMIT 1 [ RunTime:0.000250s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=28600,`left_ach`=28600  WHERE  `id` = 192 [ RunTime:0.003404s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 191 LIMIT 1 [ RunTime:0.000249s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=28700,`left_ach`=28700  WHERE  `id` = 191 [ RunTime:0.002507s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 190 LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=28700,`left_ach`=28700  WHERE  `id` = 190 [ RunTime:0.002751s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 189 LIMIT 1 [ RunTime:0.000262s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=28700,`left_ach`=28700  WHERE  `id` = 189 [ RunTime:0.002732s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 188 LIMIT 1 [ RunTime:0.000277s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=28800,`left_ach`=28800  WHERE  `id` = 188 [ RunTime:0.002715s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 183 LIMIT 1 [ RunTime:0.000231s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=28900,`left_ach`=28900  WHERE  `id` = 183 [ RunTime:0.002820s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000261s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=28900,`left_ach`=28900  WHERE  `id` = 182 [ RunTime:0.002764s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 177 LIMIT 1 [ RunTime:0.000249s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=28900,`left_ach`=28900  WHERE  `id` = 177 [ RunTime:0.002589s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000255s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=28900,`left_ach`=28900  WHERE  `id` = 176 [ RunTime:0.002807s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000296s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=319300,`left_ach`=319300  WHERE  `id` = 163 [ RunTime:0.002591s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 140 LIMIT 1 [ RunTime:0.000309s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` = 210 LIMIT 1 [ RunTime:0.000428s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 209 LIMIT 1 [ RunTime:0.000224s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 209 LIMIT 1 [ RunTime:0.000191s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 208 LIMIT 1 [ RunTime:0.000201s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 208 LIMIT 1 [ RunTime:0.000198s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 207 LIMIT 1 [ RunTime:0.000196s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 207 LIMIT 1 [ RunTime:0.000183s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 206 LIMIT 1 [ RunTime:0.000195s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 206 LIMIT 1 [ RunTime:0.000182s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 205 LIMIT 1 [ RunTime:0.000201s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 205 LIMIT 1 [ RunTime:0.000201s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 204 LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 204 LIMIT 1 [ RunTime:0.000225s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 203 LIMIT 1 [ RunTime:0.000200s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 203 LIMIT 1 [ RunTime:0.000197s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 202 LIMIT 1 [ RunTime:0.000193s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 202 LIMIT 1 [ RunTime:0.000191s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 200 LIMIT 1 [ RunTime:0.000245s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 200 LIMIT 1 [ RunTime:0.000226s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 197 LIMIT 1 [ RunTime:0.000203s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 197 LIMIT 1 [ RunTime:0.000196s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 195 LIMIT 1 [ RunTime:0.000217s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 195 LIMIT 1 [ RunTime:0.000194s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000192s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000209s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 193 LIMIT 1 [ RunTime:0.000196s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 193 LIMIT 1 [ RunTime:0.000191s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 192 LIMIT 1 [ RunTime:0.000208s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 192 LIMIT 1 [ RunTime:0.000203s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 191 LIMIT 1 [ RunTime:0.000195s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 191 LIMIT 1 [ RunTime:0.000216s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 190 LIMIT 1 [ RunTime:0.000202s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 190 LIMIT 1 [ RunTime:0.000203s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 189 LIMIT 1 [ RunTime:0.000206s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 189 LIMIT 1 [ RunTime:0.000225s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 188 LIMIT 1 [ RunTime:0.000201s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 188 LIMIT 1 [ RunTime:0.000210s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 183 LIMIT 1 [ RunTime:0.000206s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 183 LIMIT 1 [ RunTime:0.000186s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000200s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000206s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 177 LIMIT 1 [ RunTime:0.000189s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 177 LIMIT 1 [ RunTime:0.000193s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000213s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000181s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000234s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000195s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 140 LIMIT 1 [ RunTime:0.000220s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 140 LIMIT 1 [ RunTime:0.000251s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` IN (209,208,207,206,205,204,203,202,200,197,195,194,193,192,191,190,189,188,183,182,177,176,163) [ RunTime:0.000645s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_ach`=left_ach-100  WHERE  `id` = 194 [ RunTime:0.000350s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `right_ach`=right_ach-100  WHERE  `id` = 194 [ RunTime:0.000223s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneMatchPercent' LIMIT 1 [ RunTime:0.000307s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneBoomPercent' LIMIT 1 [ RunTime:0.000238s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneToThreePercent' LIMIT 1 [ RunTime:0.000223s ]
+[ sql ] [ SQL ] SELECT SUM(score) AS tp_sum FROM `sql_account` WHERE  `uid` = 194  AND `source` = 2  AND `is_add` = 1  AND `type` = 3  AND `class` = 1  AND ( `created_at` > '1519920000' AND `created_at` < '1520006399' ) LIMIT 1 [ RunTime:0.000507s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneTopBoomScore' LIMIT 1 [ RunTime:0.000257s ]
+[ sql ] [ SQL ] SELECT `prize_score` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000197s ]
+[ sql ] [ SQL ] INSERT INTO `sql_account` (`uid` , `score` , `cur_score` , `remark` , `class` , `is_add` , `type` , `source` , `from_uid` , `created_at`) VALUES (194 , 2.5 , 1406.2 , '对碰奖结算' , 1 , 1 , 3 , 2 , 210 , '1519952338') [ RunTime:0.000313s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `prize_score`=prize_score+2.5  WHERE  `id` = 194 [ RunTime:0.000237s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000186s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000202s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000193s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000184s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000181s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000172s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000175s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000199s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 140 LIMIT 1 [ RunTime:0.000173s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 140 LIMIT 1 [ RunTime:0.000184s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000364s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000374s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'sevenContributionPercent' LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] SELECT `prize_score` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000226s ]
+[ sql ] [ SQL ] INSERT INTO `sql_account` (`uid` , `score` , `cur_score` , `remark` , `class` , `is_add` , `type` , `source` , `from_uid` , `created_at`) VALUES (176 , 0.125 , 1482.185 , '贡献奖结算' , 1 , 1 , 3 , 2 , 194 , '1519952338') [ RunTime:0.000365s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `prize_score`=prize_score+0.125  WHERE  `id` = 176 [ RunTime:0.000255s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000375s ]
+[ log ] <<<碰撞完成 新人id：210--手机号：15900000011 --碰撞金额：100---配比率：0.5---获奖人id：194--碰撞时间：2018-03-02 08:58:581519952338>>>
+---------------------------------------------------------------
+[ 2018-03-02T11:45:42+08:00 ] 121.42.251.110 115.57.129.228 POST /home/register/dofourstep
+[ info ] apibof.ewtouch.com/home/register/dofourstep [运行时间：0.191368s][吞吐率：5.23req/s] [内存消耗：3,028.26kb] [文件加载：62]
+[ info ] [ LANG ] /www/wwwroot/bof.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'register',
+    2 => 'dofourstep',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=k4gibcipldjtr9lv7bhbjirh0l',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://webbof.ewtouch.com/zh/register4.html?id=3',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'origin' => 'http://webbof.ewtouch.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '93',
+  'connection' => 'keep-alive',
+  'host' => 'apibof.ewtouch.com',
+)
+[ info ] [ PARAM ] array (
+  'id' => '3',
+  'videourl' => 'http://webbof.ewtouch.com/headimg/2018030211454118200000048630119.mp4',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\home\controller\Register->dofourstep[ /www/wwwroot/bof.com/application/home/controller/Register.php ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+)
+[ info ] [ CACHE ] INIT file
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000488s ] mysql:dbname=bof_com;host=121.42.251.110;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_config` [ RunTime:0.000924s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'pu_straight' LIMIT 1 [ RunTime:0.000317s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'pu_straight' LIMIT 1 [ RunTime:0.000255s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'yin_straight' LIMIT 1 [ RunTime:0.000236s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'jin_straight' LIMIT 1 [ RunTime:0.000225s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'baijin_straight' LIMIT 1 [ RunTime:0.000226s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'heijin_straight' LIMIT 1 [ RunTime:0.000223s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'zuan_straight' LIMIT 1 [ RunTime:0.000230s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'lanzuan_straight' LIMIT 1 [ RunTime:0.000235s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_users` [ RunTime:0.000976s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 210 LIMIT 1 [ RunTime:0.000248s ]
+[ sql ] [ SQL ] SELECT `id`,`region` FROM `sql_users` WHERE  `nid` = 210  AND `region` = 1 LIMIT 1 [ RunTime:0.000275s ]
+[ sql ] [ SQL ] SELECT `all_nid` FROM `sql_users` WHERE  `id` = 210 LIMIT 1 [ RunTime:0.000217s ]
+[ sql ] [ SQL ] SELECT `reg_score` FROM `sql_users` WHERE  `id` = 211 LIMIT 1 [ RunTime:0.000194s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `password`='e10adc3949ba59abbe56e057f20f883e',`phone`='15900000012',`code`='T015',`two_password`='e10adc3949ba59abbe56e057f20f883e',`cascade`=1,`bd_id`='xxxx',`region`=1,`class_reg`=1,`class`=1,`pid`=210,`all_pid`='0,140,163,176,182,194,195,197,200,202,203,204,205,206,207,208,209,210,',`all_nid`='0,140,163,176,177,182,183,188,189,190,191,192,193,194,195,197,200,202,203,204,205,206,207,208,209,210,',`nid`=210,`pattern`=0,`nids`=210,`truename`='gvdg',`identity`='gsgs',`bank_name`='sgsdg',`bank_account`='454165',`bank_user`='gs',`bank_branch`='fv',`zhifubao`='',`weixin`='',`videourl`='http://webbof.ewtouch.com/headimg/2018030211454118200000048630119.mp4',`created_at`='1519962342',`step`=4,`nickname`='BOF_gvW96L2'  WHERE  `id` = 211 [ RunTime:0.004574s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `reg_score`=0,`updated_at`='1519962342'  WHERE  `id` = 211 [ RunTime:0.002409s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_account` [ RunTime:0.000690s ]
+[ sql ] [ SQL ] INSERT INTO `sql_account` (`score` , `cur_score` , `remark` , `class` , `is_add` , `type` , `uid` , `source` , `created_at`) VALUES (-100 , 0 , '激活用户' , 1 , 2 , 1 , 211 , 11 , '1519962342') [ RunTime:0.006133s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_disc` [ RunTime:0.000638s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `sql_disc` LIMIT 1 [ RunTime:0.000206s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_disc` ORDER BY `id`  desc LIMIT 1 [ RunTime:0.000191s ]
+[ sql ] [ SQL ] SELECT `class`,`balance`,`id` FROM `sql_users` WHERE  `id` = 211  AND `islock` = 1 LIMIT 1 [ RunTime:0.000235s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_bof_rank` [ RunTime:0.000658s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_bof_rank` WHERE  `uid` = 211  AND `status` = 1 LIMIT 1 [ RunTime:0.000239s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_bof_issue` [ RunTime:0.000628s ]
+[ sql ] [ SQL ] SELECT `bof_num`,`id` FROM `sql_bof_issue` WHERE  `status` = 1 ORDER BY `id`  desc LIMIT 1 [ RunTime:0.000224s ]
+[ sql ] [ SQL ] UPDATE `sql_bof_issue`  SET `bof_num`=9900383.337561  WHERE  `id` = 23 [ RunTime:0.003545s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `balance`=balance+243.90243902439  WHERE  `id` = 211 [ RunTime:0.003737s ]
+[ sql ] [ SQL ] SELECT `balance` FROM `sql_users` WHERE  `id` = 211 LIMIT 1 [ RunTime:0.000225s ]
+[ sql ] [ SQL ] INSERT INTO `sql_account` (`uid` , `cur_score` , `score` , `remark` , `class` , `is_add` , `type` , `source` , `created_at`) VALUES (211 , 243.9 , 243.90243902439 , '系统分配bof' , 2 , 1 , 8 , 13 , '1519962342') [ RunTime:0.002328s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_bof_deal` [ RunTime:0.001188s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_bof_deal` WHERE  `order_sn` = '2018031519962342180' LIMIT 1 [ RunTime:0.000386s ]
+[ sql ] [ SQL ] INSERT INTO `sql_bof_deal` (`uid` , `order_sn` , `sell_price` , `sell_num` , `status` , `type` , `created_at`) VALUES (211 , '2018031519962342180' , 0.205 , 243.90243902439 , 2 , 2 , '1519962342') [ RunTime:0.002610s ]
+[ sql ] [ SQL ] SELECT `region`,`nid` FROM `sql_users` WHERE  `id` = 211 LIMIT 1 [ RunTime:0.000228s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 210 LIMIT 1 [ RunTime:0.000224s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=3019400,`left_ach`=3019400  WHERE  `id` = 210 [ RunTime:0.002532s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 209 LIMIT 1 [ RunTime:0.000224s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=200,`left_ach`=200  WHERE  `id` = 209 [ RunTime:0.002612s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 208 LIMIT 1 [ RunTime:0.000251s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=300,`left_ach`=300  WHERE  `id` = 208 [ RunTime:0.002383s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 207 LIMIT 1 [ RunTime:0.000244s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=400,`left_ach`=400  WHERE  `id` = 207 [ RunTime:0.002588s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 206 LIMIT 1 [ RunTime:0.000232s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=500,`left_ach`=500  WHERE  `id` = 206 [ RunTime:0.002587s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 205 LIMIT 1 [ RunTime:0.000235s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=600,`left_ach`=600  WHERE  `id` = 205 [ RunTime:0.002886s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 204 LIMIT 1 [ RunTime:0.000251s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=700,`left_ach`=700  WHERE  `id` = 204 [ RunTime:0.002430s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 203 LIMIT 1 [ RunTime:0.000235s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=1700,`left_ach`=1700  WHERE  `id` = 203 [ RunTime:0.002712s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 202 LIMIT 1 [ RunTime:0.000245s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=1800,`left_ach`=1800  WHERE  `id` = 202 [ RunTime:0.002989s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 200 LIMIT 1 [ RunTime:0.000250s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=1900,`left_ach`=1900  WHERE  `id` = 200 [ RunTime:0.002781s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 197 LIMIT 1 [ RunTime:0.000237s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=2000,`left_ach`=2000  WHERE  `id` = 197 [ RunTime:0.002431s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 195 LIMIT 1 [ RunTime:0.000239s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=2300,`left_ach`=2300  WHERE  `id` = 195 [ RunTime:0.002685s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000226s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=12300,`left_ach`=100  WHERE  `id` = 194 [ RunTime:0.002637s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 193 LIMIT 1 [ RunTime:0.000233s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=28200,`left_ach`=28200  WHERE  `id` = 193 [ RunTime:0.002534s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 192 LIMIT 1 [ RunTime:0.000248s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=28700,`left_ach`=28700  WHERE  `id` = 192 [ RunTime:0.002688s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 191 LIMIT 1 [ RunTime:0.000231s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=28800,`left_ach`=28800  WHERE  `id` = 191 [ RunTime:0.002471s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 190 LIMIT 1 [ RunTime:0.000225s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=28800,`left_ach`=28800  WHERE  `id` = 190 [ RunTime:0.002406s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 189 LIMIT 1 [ RunTime:0.000256s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=28800,`left_ach`=28800  WHERE  `id` = 189 [ RunTime:0.002471s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 188 LIMIT 1 [ RunTime:0.000235s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=28900,`left_ach`=28900  WHERE  `id` = 188 [ RunTime:0.002598s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 183 LIMIT 1 [ RunTime:0.000224s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=29000,`left_ach`=29000  WHERE  `id` = 183 [ RunTime:0.002374s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000226s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=29000,`left_ach`=29000  WHERE  `id` = 182 [ RunTime:0.002263s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 177 LIMIT 1 [ RunTime:0.000222s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=29000,`left_ach`=29000  WHERE  `id` = 177 [ RunTime:0.002236s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000232s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=29000,`left_ach`=29000  WHERE  `id` = 176 [ RunTime:0.002835s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000233s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=319400,`left_ach`=319400  WHERE  `id` = 163 [ RunTime:0.002341s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 140 LIMIT 1 [ RunTime:0.000216s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` = 211 LIMIT 1 [ RunTime:0.000400s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 210 LIMIT 1 [ RunTime:0.000210s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 210 LIMIT 1 [ RunTime:0.000192s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 209 LIMIT 1 [ RunTime:0.000186s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 209 LIMIT 1 [ RunTime:0.000194s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 208 LIMIT 1 [ RunTime:0.000176s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 208 LIMIT 1 [ RunTime:0.000174s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 207 LIMIT 1 [ RunTime:0.000194s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 207 LIMIT 1 [ RunTime:0.000173s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 206 LIMIT 1 [ RunTime:0.000173s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 206 LIMIT 1 [ RunTime:0.000191s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 205 LIMIT 1 [ RunTime:0.000184s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 205 LIMIT 1 [ RunTime:0.000184s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 204 LIMIT 1 [ RunTime:0.000193s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 204 LIMIT 1 [ RunTime:0.000198s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 203 LIMIT 1 [ RunTime:0.000183s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 203 LIMIT 1 [ RunTime:0.000201s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 202 LIMIT 1 [ RunTime:0.000187s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 202 LIMIT 1 [ RunTime:0.000183s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 200 LIMIT 1 [ RunTime:0.000185s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 200 LIMIT 1 [ RunTime:0.000192s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 197 LIMIT 1 [ RunTime:0.000182s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 197 LIMIT 1 [ RunTime:0.000182s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 195 LIMIT 1 [ RunTime:0.000194s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 195 LIMIT 1 [ RunTime:0.000173s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000177s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000201s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 193 LIMIT 1 [ RunTime:0.000176s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 193 LIMIT 1 [ RunTime:0.000176s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 192 LIMIT 1 [ RunTime:0.000190s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 192 LIMIT 1 [ RunTime:0.000179s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 191 LIMIT 1 [ RunTime:0.000176s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 191 LIMIT 1 [ RunTime:0.000187s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 190 LIMIT 1 [ RunTime:0.000201s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 190 LIMIT 1 [ RunTime:0.000187s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 189 LIMIT 1 [ RunTime:0.000195s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 189 LIMIT 1 [ RunTime:0.000191s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 188 LIMIT 1 [ RunTime:0.000175s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 188 LIMIT 1 [ RunTime:0.000175s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 183 LIMIT 1 [ RunTime:0.000182s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 183 LIMIT 1 [ RunTime:0.000183s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000192s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000180s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 177 LIMIT 1 [ RunTime:0.000187s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 177 LIMIT 1 [ RunTime:0.000187s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000202s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000180s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000175s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000178s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 140 LIMIT 1 [ RunTime:0.000183s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 140 LIMIT 1 [ RunTime:0.000176s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` IN (210,209,208,207,206,205,204,203,202,200,197,195,194,193,192,191,190,189,188,183,182,177,176,163) [ RunTime:0.000576s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_ach`=left_ach-100  WHERE  `id` = 194 [ RunTime:0.000249s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `right_ach`=right_ach-100  WHERE  `id` = 194 [ RunTime:0.000223s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneMatchPercent' LIMIT 1 [ RunTime:0.000278s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneBoomPercent' LIMIT 1 [ RunTime:0.000229s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneToThreePercent' LIMIT 1 [ RunTime:0.000214s ]
+[ sql ] [ SQL ] SELECT SUM(score) AS tp_sum FROM `sql_account` WHERE  `uid` = 194  AND `source` = 2  AND `is_add` = 1  AND `type` = 3  AND `class` = 1  AND ( `created_at` > '1519920000' AND `created_at` < '1520006399' ) LIMIT 1 [ RunTime:0.000525s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneTopBoomScore' LIMIT 1 [ RunTime:0.000240s ]
+[ sql ] [ SQL ] SELECT `prize_score` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000208s ]
+[ sql ] [ SQL ] INSERT INTO `sql_account` (`uid` , `score` , `cur_score` , `remark` , `class` , `is_add` , `type` , `source` , `from_uid` , `created_at`) VALUES (194 , 2.5 , 1108.7 , '对碰奖结算' , 1 , 1 , 3 , 2 , 211 , '1519962342') [ RunTime:0.000291s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `prize_score`=prize_score+2.5  WHERE  `id` = 194 [ RunTime:0.000230s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000184s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000196s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000188s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000175s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000194s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000210s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000189s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000182s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 140 LIMIT 1 [ RunTime:0.000178s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 140 LIMIT 1 [ RunTime:0.000170s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000328s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000342s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'sevenContributionPercent' LIMIT 1 [ RunTime:0.000254s ]
+[ sql ] [ SQL ] SELECT `prize_score` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000194s ]
+[ sql ] [ SQL ] INSERT INTO `sql_account` (`uid` , `score` , `cur_score` , `remark` , `class` , `is_add` , `type` , `source` , `from_uid` , `created_at`) VALUES (176 , 0.125 , 1482.315 , '贡献奖结算' , 1 , 1 , 3 , 2 , 194 , '1519962342') [ RunTime:0.000225s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `prize_score`=prize_score+0.125  WHERE  `id` = 176 [ RunTime:0.000227s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000395s ]
+[ log ] <<<碰撞完成 新人id：211--手机号：15900000012 --碰撞金额：100---配比率：0.5---获奖人id：194--碰撞时间：2018-03-02 11:45:421519962342>>>
+---------------------------------------------------------------
+[ 2018-03-02T16:12:15+08:00 ] 121.42.251.110 115.57.129.228 POST /home/users/DoUpgrade
+[ info ] apibof.ewtouch.com/home/users/DoUpgrade [运行时间：0.082021s][吞吐率：12.19req/s] [内存消耗：3,222.76kb] [文件加载：65]
+[ info ] [ LANG ] /www/wwwroot/bof.com/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => 'users',
+    2 => 'DoUpgrade',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=3ba4iu87jkr8kueu7otatmum4i',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://webbof.ewtouch.com/zh/business_up.html',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36',
+  'origin' => 'http://webbof.ewtouch.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '7',
+  'connection' => 'keep-alive',
+  'host' => 'apibof.ewtouch.com',
+)
+[ info ] [ PARAM ] array (
+  'class' => '6',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+  'httponly' => true,
+  'secure' => false,
+)
+[ info ] [ RUN ] app\home\controller\Users->DoUpgrade[ /www/wwwroot/bof.com/application/home/controller/Users.php ]
+[ info ] [ CACHE ] INIT file
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000477s ] mysql:dbname=bof_com;host=121.42.251.110;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_config` [ RunTime:0.000978s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'pu_straight' LIMIT 1 [ RunTime:0.000324s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'pu_straight' LIMIT 1 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'yin_straight' LIMIT 1 [ RunTime:0.000238s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'jin_straight' LIMIT 1 [ RunTime:0.000226s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'baijin_straight' LIMIT 1 [ RunTime:0.000243s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'heijin_straight' LIMIT 1 [ RunTime:0.000224s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'zuan_straight' LIMIT 1 [ RunTime:0.000234s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'lanzuan_straight' LIMIT 1 [ RunTime:0.000247s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_users` [ RunTime:0.000999s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` = 197 LIMIT 1 [ RunTime:0.000479s ]
+[ sql ] [ SQL ] SELECT `bof_all`,`class`,`balance`,`reg_score` FROM `sql_users` WHERE  `id` = 197 LIMIT 1 [ RunTime:0.000232s ]
+[ sql ] [ SQL ] SELECT `class` FROM `sql_users` WHERE  `pid` = 197 [ RunTime:0.000229s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_user_upgrade` [ RunTime:0.000682s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_user_upgrade` WHERE  `uid` = 197 LIMIT 1 [ RunTime:0.000285s ]
+[ sql ] [ SQL ] SELECT `class`,`reg_score`,`shopping_number` FROM `sql_users` WHERE  `id` = 197 LIMIT 1 [ RunTime:0.000215s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `reg_score`=300,`class`=6  WHERE  `id` = 197 [ RunTime:0.000311s ]
+[ sql ] [ SQL ] INSERT INTO `sql_user_upgrade` (`uid` , `truename` , `code` , `type` , `created_at` , `class` , `class_at` , `Amount` , `updated_at` , `state`) VALUES (197 , 't003' , 'T004' , '会员升级' , '1519978335' , 2 , 6 , 5000 , '1519978335' , 1) [ RunTime:0.000327s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_account` [ RunTime:0.000667s ]
+[ sql ] [ SQL ] INSERT INTO `sql_account` (`uid` , `score` , `cur_score` , `remark` , `type` , `is_add` , `class` , `from_uid` , `created_at` , `source`) VALUES (197 , -4700 , 300 , '会员升级' , 1 , 2 , 1 , 197 , '1519978335' , 8) [ RunTime:0.000233s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_disc` [ RunTime:0.000618s ]
+[ sql ] [ SQL ] SELECT `market_price` FROM `sql_disc` ORDER BY id desc LIMIT 1 [ RunTime:0.000204s ]
+[ sql ] [ SQL ] SELECT `status`,`class` FROM `sql_users` WHERE  `id` = 197 LIMIT 1 [ RunTime:0.000207s ]
+[ sql ] [ SQL ] SELECT `class`,`balance`,`id` FROM `sql_users` WHERE  `id` = 197  AND `islock` = 1 LIMIT 1 [ RunTime:0.000233s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_bof_rank` [ RunTime:0.000665s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_bof_rank` WHERE  `uid` = 197  AND `status` = 1 LIMIT 1 [ RunTime:0.000293s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_bof_issue` [ RunTime:0.000714s ]
+[ sql ] [ SQL ] SELECT `bof_num`,`id` FROM `sql_bof_issue` WHERE  `status` = 1 ORDER BY `id`  desc LIMIT 1 [ RunTime:0.000218s ]
+[ sql ] [ SQL ] UPDATE `sql_bof_issue`  SET `bof_num`=9827783.3215942  WHERE  `id` = 23 [ RunTime:0.000250s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `balance`=balance+13623.188405797  WHERE  `id` = 197 [ RunTime:0.000239s ]
+[ sql ] [ SQL ] SELECT `balance` FROM `sql_users` WHERE  `id` = 197 LIMIT 1 [ RunTime:0.000208s ]
+[ sql ] [ SQL ] INSERT INTO `sql_account` (`uid` , `cur_score` , `score` , `remark` , `class` , `is_add` , `type` , `source` , `created_at`) VALUES (197 , 14395.47 , 13623.188405797 , '系统分配bof' , 2 , 1 , 8 , 13 , '1519978335') [ RunTime:0.000226s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_bof_deal` [ RunTime:0.000726s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_bof_deal` WHERE  `order_sn` = '2018031519978335809' LIMIT 1 [ RunTime:0.000320s ]
+[ sql ] [ SQL ] INSERT INTO `sql_bof_deal` (`uid` , `order_sn` , `sell_price` , `sell_num` , `status` , `type` , `created_at`) VALUES (197 , '2018031519978335809' , 0.207 , 13623.188405797 , 2 , 2 , '1519978335') [ RunTime:0.000220s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `sql_disc` LIMIT 1 [ RunTime:0.000217s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_disc` ORDER BY `id`  desc LIMIT 1 [ RunTime:0.000211s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'market' LIMIT 1 [ RunTime:0.000244s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'bof_all' LIMIT 1 [ RunTime:0.000221s ]
+[ sql ] [ SQL ] SELECT `bof_num` FROM `sql_bof_issue` WHERE  `status` = 1 ORDER BY `id`  desc LIMIT 1 [ RunTime:0.000220s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'current_price' LIMIT 1 [ RunTime:0.000221s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sql_per` [ RunTime:0.000649s ]
+[ sql ] [ SQL ] SELECT SUM(num) AS tp_sum FROM `sql_per` LIMIT 1 [ RunTime:0.000185s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_account` ORDER BY `id`  desc LIMIT 1 [ RunTime:0.000171s ]
+[ sql ] [ SQL ] SELECT SUM(score) AS tp_sum FROM `sql_account` WHERE  `is_add` = 2  AND `source` IN (8,11) LIMIT 1 [ RunTime:0.000423s ]
+[ sql ] [ SQL ] INSERT INTO `sql_disc` (`market_price` , `created_at`) VALUES (0.208 , '1519978335') [ RunTime:0.000212s ]
+[ sql ] [ SQL ] SELECT `uid` FROM `sql_bof_deal` WHERE  `pay_status` = 2 [ RunTime:0.000212s ]
+[ sql ] [ SQL ] SELECT `id`,`bof_num`,`class`,`balance`,`balance_return`,`game_score`,`fund_gold`,`con_score`,`prize_score` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000229s ]
+[ sql ] [ SQL ] SELECT `region`,`nid` FROM `sql_users` WHERE  `id` = 197 LIMIT 1 [ RunTime:0.000204s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 195 LIMIT 1 [ RunTime:0.000224s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=7300,`left_ach`=7300  WHERE  `id` = 195 [ RunTime:0.000231s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000200s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=17300,`left_ach`=5000  WHERE  `id` = 194 [ RunTime:0.000223s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 193 LIMIT 1 [ RunTime:0.000214s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=34200,`left_ach`=34200  WHERE  `id` = 193 [ RunTime:0.000240s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 192 LIMIT 1 [ RunTime:0.000199s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=34700,`left_ach`=34700  WHERE  `id` = 192 [ RunTime:0.000227s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 191 LIMIT 1 [ RunTime:0.000198s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=34800,`left_ach`=34800  WHERE  `id` = 191 [ RunTime:0.000223s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 190 LIMIT 1 [ RunTime:0.000210s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=34800,`left_ach`=34800  WHERE  `id` = 190 [ RunTime:0.000225s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 189 LIMIT 1 [ RunTime:0.000202s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=34800,`left_ach`=34800  WHERE  `id` = 189 [ RunTime:0.000274s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 188 LIMIT 1 [ RunTime:0.000232s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=34900,`left_ach`=34900  WHERE  `id` = 188 [ RunTime:0.000258s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 183 LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=35000,`left_ach`=35000  WHERE  `id` = 183 [ RunTime:0.000252s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000237s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=35000,`left_ach`=35000  WHERE  `id` = 182 [ RunTime:0.000238s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 177 LIMIT 1 [ RunTime:0.000250s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=35000,`left_ach`=35000  WHERE  `id` = 177 [ RunTime:0.000240s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000248s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=35000,`left_ach`=35000  WHERE  `id` = 176 [ RunTime:0.000244s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000232s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_all_ach`=347300,`left_ach`=347300  WHERE  `id` = 163 [ RunTime:0.000238s ]
+[ sql ] [ SQL ] SELECT `nid`,`region`,`left_all_ach`,`right_all_ach`,`left_ach`,`right_ach` FROM `sql_users` WHERE  `id` = 140 LIMIT 1 [ RunTime:0.000237s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` = 197 LIMIT 1 [ RunTime:0.000385s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 195 LIMIT 1 [ RunTime:0.000216s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 195 LIMIT 1 [ RunTime:0.000206s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000226s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000237s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 193 LIMIT 1 [ RunTime:0.000216s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 193 LIMIT 1 [ RunTime:0.000204s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 192 LIMIT 1 [ RunTime:0.000205s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 192 LIMIT 1 [ RunTime:0.000212s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 191 LIMIT 1 [ RunTime:0.000185s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 191 LIMIT 1 [ RunTime:0.000211s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 190 LIMIT 1 [ RunTime:0.000224s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 190 LIMIT 1 [ RunTime:0.000196s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 189 LIMIT 1 [ RunTime:0.000191s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 189 LIMIT 1 [ RunTime:0.000188s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 188 LIMIT 1 [ RunTime:0.000180s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 188 LIMIT 1 [ RunTime:0.000183s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 183 LIMIT 1 [ RunTime:0.000208s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 183 LIMIT 1 [ RunTime:0.000181s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000181s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000199s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 177 LIMIT 1 [ RunTime:0.000181s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 177 LIMIT 1 [ RunTime:0.000182s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000194s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000181s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000181s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000201s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 140 LIMIT 1 [ RunTime:0.000181s ]
+[ sql ] [ SQL ] SELECT `nid` FROM `sql_users` WHERE  `id` = 140 LIMIT 1 [ RunTime:0.000179s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` IN (195,194,193,192,191,190,189,188,183,182,177,176,163) [ RunTime:0.000514s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `left_ach`=left_ach-4500  WHERE  `id` = 194 [ RunTime:0.000248s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `right_ach`=right_ach-4500  WHERE  `id` = 194 [ RunTime:0.000214s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'sixMatchPercent' LIMIT 1 [ RunTime:0.000265s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneBoomPercent' LIMIT 1 [ RunTime:0.000239s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneToThreePercent' LIMIT 1 [ RunTime:0.000220s ]
+[ sql ] [ SQL ] SELECT SUM(score) AS tp_sum FROM `sql_account` WHERE  `uid` = 194  AND `source` = 2  AND `is_add` = 1  AND `type` = 3  AND `class` = 1  AND ( `created_at` > '1519920000' AND `created_at` < '1520006399' ) LIMIT 1 [ RunTime:0.000547s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneTopBoomScore' LIMIT 1 [ RunTime:0.000234s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'oneTopBoomScore' LIMIT 1 [ RunTime:0.000221s ]
+[ sql ] [ SQL ] SELECT `prize_score` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000197s ]
+[ sql ] [ SQL ] INSERT INTO `sql_account` (`uid` , `score` , `cur_score` , `remark` , `class` , `is_add` , `type` , `source` , `from_uid` , `created_at`) VALUES (194 , 95 , 1253.7 , '对碰奖结算' , 1 , 1 , 3 , 2 , 197 , '1519978335') [ RunTime:0.000223s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `prize_score`=prize_score+95  WHERE  `id` = 194 [ RunTime:0.000250s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000189s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 194 LIMIT 1 [ RunTime:0.000187s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000205s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000182s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000181s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000195s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000180s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000179s ]
+[ sql ] [ SQL ] SELECT `id` FROM `sql_users` WHERE  `id` = 140 LIMIT 1 [ RunTime:0.000194s ]
+[ sql ] [ SQL ] SELECT `pid` FROM `sql_users` WHERE  `id` = 140 LIMIT 1 [ RunTime:0.000176s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` = 182 LIMIT 1 [ RunTime:0.000322s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000363s ]
+[ sql ] [ SQL ] SELECT `value` FROM `sql_config` WHERE  `name` = 'sevenContributionPercent' LIMIT 1 [ RunTime:0.000251s ]
+[ sql ] [ SQL ] SELECT `prize_score` FROM `sql_users` WHERE  `id` = 176 LIMIT 1 [ RunTime:0.000210s ]
+[ sql ] [ SQL ] INSERT INTO `sql_account` (`uid` , `score` , `cur_score` , `remark` , `class` , `is_add` , `type` , `source` , `from_uid` , `created_at`) VALUES (176 , 4.75 , 1487.06 , '贡献奖结算' , 1 , 1 , 3 , 2 , 194 , '1519978335') [ RunTime:0.000225s ]
+[ sql ] [ SQL ] UPDATE `sql_users`  SET `prize_score`=prize_score+4.75  WHERE  `id` = 176 [ RunTime:0.000226s ]
+[ sql ] [ SQL ] SELECT * FROM `sql_users` WHERE  `id` = 163 LIMIT 1 [ RunTime:0.000328s ]
+[ log ] <<<碰撞完成 新人id：197--手机号：15900000001 --碰撞金额：4500---配比率：0.6---获奖人id：194--碰撞时间：2018-03-02 16:12:151519978335>>>
